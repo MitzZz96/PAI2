@@ -16,6 +16,10 @@ public class Category {
     @NotBlank(message = "Kategoria wymaga nazwy")
     private String name;
 
+    public Category(@NotBlank(message = "Kategoria wymaga nazwy") String name) {
+        this.name = name;
+    }
+
     public Long getIdCategory() {
         return idCategory;
     }

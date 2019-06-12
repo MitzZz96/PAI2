@@ -16,7 +16,7 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public Category saveOrUpdateProduct(Category category){
+    public Category saveOrUpdateCategory(Category category){
 
         try {
             category.setName(category.getName().toUpperCase());
@@ -37,7 +37,7 @@ public class CategoryService {
         return category;
     }
 
-    public List<Category> findAllProducts(){
+    public List<Category> findAllCategories(){
         return categoryRepository.findAll();
     }
 

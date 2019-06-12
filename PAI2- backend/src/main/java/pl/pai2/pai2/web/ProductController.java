@@ -30,7 +30,7 @@ public class ProductController {
         if(errorMap!=null) return errorMap;
 
         Product product1 = productService.saveOrUpdateProduct(product);
-        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+        return new ResponseEntity<Product>(product1, HttpStatus.CREATED);
     }
 
     @GetMapping("/{name}")
