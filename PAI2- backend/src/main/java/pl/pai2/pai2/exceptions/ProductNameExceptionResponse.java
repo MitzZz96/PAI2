@@ -2,17 +2,17 @@ package pl.pai2.pai2.exceptions;
 
 public class ProductNameExceptionResponse {
 
-    private String productId;
+    private String name;
 
-    public ProductNameExceptionResponse(String productId){
-        this.productId = productId;
+    public ProductNameExceptionResponse(String name){
+        this.name = name;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getName() {
+        return name;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setName(String name) {
+        this.name = name;
     }
 }

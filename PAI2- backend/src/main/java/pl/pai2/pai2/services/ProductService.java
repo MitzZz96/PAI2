@@ -25,12 +25,12 @@ public class ProductService {
         }
     }
 
-    public List<Product> findByProductName(String productName){
+    public List<Product> findByName(String name){
 
-        List<Product> products = productRepository.findByProductName(productName);
+        List<Product> products = productRepository.findByName(name);
 
         if(products == null){
-            throw new ProductNameException("Product Name '"+ productName +"' does not exists");
+            throw new ProductNameException("Product Name '"+ name +"' does not exists");
         }
         return products;
     }

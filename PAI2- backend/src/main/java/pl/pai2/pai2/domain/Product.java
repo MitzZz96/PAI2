@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -15,19 +16,20 @@ public class Product {
 
     @NotBlank(message = "Pole nazwa jest wymagane")
     private String name;
-    @NotBlank(message = "Pole cena jest wymagane")
+    @NotNull(message = "Pole cena jest wymagane")
     private double price;
     @NotBlank(message = "Pole opis jest wymagane")
     private String description;
 
     private String image;
 
+    @NotNull(message = "Nie podano ilości")
+    private int quantity;
+
     @JsonFormat(pattern = "yyyy-mm-dd")
     @Column(updatable = false)
     private Date created_At;
-    @NotBlank(message = "Nie podano ilości")
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private int quantity;
     private Date updated_At;
 
     public long getIdProduct() {
