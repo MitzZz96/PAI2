@@ -3,6 +3,7 @@ package pl.pai2.pai2.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -14,6 +15,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProduct;
 
+    @Valid
     @NotBlank(message = "Pole nazwa jest wymagane")
     private String name;
     @NotNull(message = "Pole cena jest wymagane")
@@ -26,11 +28,18 @@ public class Product {
     @NotNull(message = "Nie podano ilości")
     private int quantity;
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idCategory", nullable = false)
+    private Category category;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(updatable = false)
     private Date created_At;
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updated_At;
+
+    public Product() {
+    }
 
     public long getIdProduct() {
         return idProduct;
@@ -78,6 +87,14 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @PrePersist

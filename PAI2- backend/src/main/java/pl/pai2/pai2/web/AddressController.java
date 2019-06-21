@@ -9,6 +9,7 @@ import pl.pai2.pai2.domain.Address;
 import pl.pai2.pai2.services.AddressService;
 import pl.pai2.pai2.services.MapValidationErrorService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class AddressController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("")
-    public ResponseEntity<?> addNewAddress(@RequestBody Address address, BindingResult result) {
+    public ResponseEntity<?> addNewAddress(@Valid @RequestBody Address address, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if(errorMap!=null) return errorMap;

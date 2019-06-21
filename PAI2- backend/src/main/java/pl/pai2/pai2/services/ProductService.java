@@ -3,6 +3,7 @@ package pl.pai2.pai2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.pai2.pai2.domain.Product;
+import pl.pai2.pai2.domain.Warehouse;
 import pl.pai2.pai2.exceptions.ProductNameException;
 import pl.pai2.pai2.repositories.ProductRepository;
 
@@ -17,7 +18,7 @@ public class ProductService {
     public Product saveOrUpdateProduct(Product product){
 
         try {
-            product.setName(product.getName().toUpperCase());
+            //product.setName(product.getName().toUpperCase());
 
             return productRepository.save(product);
         } catch (Exception e){

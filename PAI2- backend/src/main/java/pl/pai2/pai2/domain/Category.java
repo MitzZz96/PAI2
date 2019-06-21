@@ -10,11 +10,14 @@ import javax.validation.constraints.NotBlank;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCategory;
 
     @NotBlank(message = "Kategoria wymaga nazwy")
     private String name;
+
+    public Category() {
+    }
 
     public Category(@NotBlank(message = "Kategoria wymaga nazwy") String name) {
         this.name = name;

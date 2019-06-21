@@ -37,6 +37,15 @@ public class CategoryService {
         return category;
     }
 
+    public Category findByName(String name){
+        Category category = categoryRepository.findByName(name);
+
+        if(category == null){
+            throw new ProductNameException("Category '"+ name +"' does not exists");
+        }
+        return category;
+    }
+
     public List<Category> findAllCategories(){
         return categoryRepository.findAll();
     }
