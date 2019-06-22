@@ -5,11 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.pai2.pai2.domain.Category;
 import pl.pai2.pai2.domain.Product;
+import pl.pai2.pai2.services.CategoryService;
 import pl.pai2.pai2.services.MapValidationErrorService;
 import pl.pai2.pai2.services.ProductService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,20 +24,30 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
     private MapValidationErrorService mapValidationErrorService;
 
-    @PostMapping("")
-    public ResponseEntity<?> createNewProduct(@Valid @RequestBody Product product, BindingResult result){
+
+    /**
+     * api/product/kategoria_produktu/
+     */
+    @PostMapping("/{categoryName}")
+    public ResponseEntity<?> createNewProduct(@PathVariable String categoryName, @Valid @RequestBody Product product, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
-        if(errorMap!=null) return errorMap;
+        if (errorMap != null) return errorMap;
+
+        product.setCategory(categoryService.findByName(categoryName));
 
         Product product1 = productService.saveOrUpdateProduct(product);
-        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+
+        return new ResponseEntity<Product>(product1, HttpStatus.CREATED);
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<?> getProductName(@PathVariable String name){
+    public ResponseEntity<?> getProductName(@PathVariable String name) {
 
         List<Product> products = productService.findByName(name);
 
@@ -42,5 +55,18 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public Iterable<Product> getAllProducts(){return productService.findAllProducts();}
+    public Iterable<Product> getAllProducts() {
+        return productService.findAllProducts();
+    }
+
+    @GetMapping("/all/{categoryName}")
+    public ResponseEntity<?> getProductsByCategory(@PathVariable String categoryName) {
+        Category category = categoryService.findByName(categoryName);
+        List<Product> products = new ArrayList<>();
+        for(Product p : productService.findAllProducts()){
+            if(p.getCategory().equals(category))
+                products.add(p);
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }
