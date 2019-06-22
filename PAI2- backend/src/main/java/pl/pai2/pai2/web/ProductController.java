@@ -33,13 +33,11 @@ public class ProductController {
     /**
      * api/product/kategoria_produktu/
      */
-    @PostMapping("/{categoryName}")
-    public ResponseEntity<?> createNewProduct(@PathVariable String categoryName, @Valid @RequestBody Product product, BindingResult result) {
+    @PostMapping("")
+    public ResponseEntity<?> createNewProduct(@Valid @RequestBody Product product, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if (errorMap != null) return errorMap;
-
-        product.setCategory(categoryService.findByName(categoryName));
 
         Product product1 = productService.saveOrUpdateProduct(product);
 
