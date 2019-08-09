@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import mieso from "../images/MainPage/mieso.jpg";
+import nabial from "../images/MainPage/nabial.jpg";
+import pieczywo from "../images/MainPage/pieczywo.jpg";
+import slodycze from "../images/MainPage/slodycze.jpg";
+import owoce from "../images/MainPage/owoce.jpg";
+import napoje from "../images/MainPage/napoje.jpg";
+import { Link } from "react-router-dom";
 
 class MainPage extends Component {
   render() {
@@ -16,49 +23,37 @@ class MainPage extends Component {
           <div className="row">
             <div className="col-md-4 m-auto">
               <div className="card main-page">
-                <a href="#">
-                  <img
-                    src="png/wedlina.png"
-                    className="card-img-top"
-                    alt="wedlina"
-                  />
+                <Link to={`miesa`}>
+                  <img src={mieso} className="card-img-top" alt="wedlina" />
                   <div className="card-body">
                     <h5 className="card-title">Świeże mięso</h5>
                     <p className="card-text" />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="col-md-4 m-auto">
               <div className="card main-page">
-                <a href="#">
-                  <img
-                    src="png/Nabial.png"
-                    className="card-img-top"
-                    alt="nabial"
-                  />
+                <Link to={`nabiał`}>
+                  <img src={nabial} className="card-img-top" alt="nabial" />
                   <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
+                    <h5 className="card-title">Nabiał</h5>
                     <p className="card-text" />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="col-md-4 m-auto">
               <div className="card main-page">
-                <a href="#">
-                  <img
-                    src="png/pieczywo.png"
-                    className="card-img-top"
-                    alt="pieczywo"
-                  />
+                <Link to={`pieczywo`}>
+                  <img src={pieczywo} className="card-img-top" alt="pieczywo" />
                   <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
+                    <h5 className="card-title">Chrupiące pieczywo</h5>
                     <p className="card-text" />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -66,49 +61,37 @@ class MainPage extends Component {
           <div className="row">
             <div className="col-md-4 m-auto">
               <div className="card main-page">
-                <a href="#">
-                  <img
-                    src="png/owoce.png"
-                    className="card-img-top"
-                    alt="owoce"
-                  />
+                <Link to={`owoce`}>
+                  <img src={owoce} className="card-img-top" alt="owoce" />
                   <div className="card-body">
-                    <h5 className="card-title">Świeże mięso</h5>
+                    <h5 className="card-title">Soczyste owoce</h5>
                     <p className="card-text" />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="col-md-4 m-auto">
               <div className="card main-page">
-                <a href="#">
-                  <img
-                    src="png/słodycze.png"
-                    className="card-img-top"
-                    alt="slodycze"
-                  />
+                <Link to={`slodycze`}>
+                  <img src={slodycze} className="card-img-top" alt="slodycze" />
                   <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
+                    <h5 className="card-title">Slodziutkie słodycze</h5>
                     <p className="card-text" />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="col-md-4 m-auto">
               <div className="card main-page">
-                <a href="#">
-                  <img
-                    src="png/napoje.png"
-                    className="card-img-top"
-                    alt="napoje"
-                  />
+                <Link to={`napoje`}>
+                  <img src={napoje} className="card-img-top" alt="napoje" />
                   <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
+                    <h5 className="card-title">Napoje</h5>
                     <p className="card-text" />
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

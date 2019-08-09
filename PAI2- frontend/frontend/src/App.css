@@ -13,7 +13,6 @@ body {
   color: rgba(85, 84, 81, 0.959);
 }
 
-
 /* ---------------Navbar-------------------------- */
 
 .navbar {
@@ -26,7 +25,6 @@ body {
   border-right-style: none;
   border-bottom-style: none;
 }
-
 
 /*------------btn - search--------------------------*/
 
@@ -91,7 +89,6 @@ body {
   outline: none;
   box-shadow: none;
 }
-
 
 /* --------------------btn - Twoje konto----------*/
 
@@ -219,7 +216,6 @@ body {
   box-shadow: none;
 }
 
-
 /*------------------------MENU------------------*/
 
 .menu {
@@ -227,11 +223,11 @@ body {
   font-size: 20px;
 }
 
-ul>li>a:visited {
+ul > li > a:visited {
   color: #ffffff;
 }
 
-ul>li>a:hover {
+ul > li > a:hover {
   background-color: #ffffff;
   color: rgba(85, 84, 81, 0.959);
   font-weight: 600;
@@ -248,15 +244,24 @@ ul>li>a:hover {
   margin: 10px;
 }
 
+.img-icon {
+  height: 25px;
+  width: 25px;
+}
 
 /*----------------------------Strona glówna ------------------------------*/
 
 .card .card-body .card-title {
   color: #000000;
+  text-align: center;
 }
 
 .card .card-body .card-text {
   color: #000000;
+}
+
+.card .card-img-top {
+  height: 200px;
 }
 
 .card {
@@ -285,8 +290,8 @@ ul>li>a:hover {
   text-decoration: none;
   border-color: black;
   border: 1px solid rgba(113, 124, 91, 0.958);
+  font-weight: bold;
 }
-
 
 /*-----------------------------REGISTRATION.HTML--------------------------*/
 
@@ -298,7 +303,6 @@ ul>li>a:hover {
   border-bottom-style: none;
 }
 
-
 /*.card .card-body .form-row .form-group .form-control {
   border-top-style: none;
   border-left-style: none;
@@ -306,10 +310,9 @@ ul>li>a:hover {
   border-bottom-style: none;
 }*/
 
-
 /*----------------------------ADRIAN------------------------------------*/
 
-img {
+/* img {
   max-width: 100%;
   width: auto\9;
   height: auto;
@@ -319,7 +322,7 @@ img {
 
 body {
   margin: 0;
-  font-family: Arial,Helvetica,sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
   background-color: #fff;
@@ -332,8 +335,8 @@ body {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
   width: 14rem;
 }
 
@@ -346,22 +349,23 @@ body {
   line-height: 19px;
   color: #333;
   margin: 0;
-} 
+}
 
-a:hover{
+a:hover {
   color: #ff7e21;
   text-decoration: none;
 }
 
-.card-body.order:hover{
+.card-body.order:hover {
   color: black;
   background-color: #ff7e21;
   text-decoration: none;
   border-color: black;
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.amount_label, .price {
+.amount_label,
+.price {
   margin-right: 3px;
   margin-bottom: 5px;
   margin-left: 10px;
@@ -383,7 +387,7 @@ a:hover{
   position: flex;s
 } */
 
-.orderMethod .row-fluid h3 {
+/* .orderMethod .row-fluid h3 {
   font: 16px Arial;
   font-weight: 700;
   margin: 0;
@@ -391,4 +395,75 @@ a:hover{
 
 .card-body.order {
   font: 15px Arial;
+} */
+
+/*----------------------------PRODUCT------------------------------------*/
+
+img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.product {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  width: 14rem;
+}
+
+.card-body .description p {
+  font-family: arial;
+  font-weight: 400;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 19px;
+  color: #333;
+  margin: 0;
+}
+.card-body .description {
+  color: #333;
+}
+
+a:hover {
+  color: #ff7e21;
+  text-decoration: none;
+}
+
+.card-body.order:hover {
+  color: black;
+  background-color: #ff7e21;
+  text-decoration: none;
+  border-color: black;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.acc {
+  width: 18rem;
+}
+
+.acc .card-header {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  color: #000000;
+}
+
+.acc .list-group .list-group-item .btn {
+  width: 200px;
+  display: inline-block;
 }

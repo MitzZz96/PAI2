@@ -9,9 +9,9 @@ export const createProduct = (
   try {
     await axios.post(`/api/product`, product, {
       headers: {
-        'Content-Type': 'application/json'
-      },
-    })
+        "Content-Type": "application/json"
+      }
+    });
     history.push(`/api/product/${idCategory}}`);
     dispatch({
       type: GET_ERRORS,
@@ -45,17 +45,17 @@ export const getProduct = (name, history) => async dispatch => {
   }
 };
 
-export const getCategory = idCategory => async dispatch => {
+export const getProductsFromCategory = idCategory => async dispatch => {
   try {
-    const res = await axios.get(`/api/category/${idCategory}`);
+    const res = await axios.get(`/api/product/category/${idCategory}`);
     dispatch({
-      type: GET_CATEGORY,
+      type: GET_PRODUCTS,
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    });
+    // dispatch({
+    //   type: GET_ERRORS,
+    //   payload: err.response.data
+    // });
   }
 };

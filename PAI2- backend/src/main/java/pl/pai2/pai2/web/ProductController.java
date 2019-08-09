@@ -66,7 +66,7 @@ public class ProductController {
         return productService.findAllProducts();
     }
 
-    @GetMapping("/all/{categoryName}")
+    @GetMapping("/category/{categoryName}")
     public ResponseEntity<?> getProductsByCategory(@PathVariable String categoryName) {
         Category category = categoryService.findByName(categoryName);
         List<Product> products = new ArrayList<>();

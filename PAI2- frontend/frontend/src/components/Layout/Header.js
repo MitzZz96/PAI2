@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import logo from "../../images/Header/logo.png";
-// import acc from "https://img.icons8.com/metro/26/000000/contacts.png";
-// import order from "https://img.icons8.com/material/24/000000/shopping-cart.png";
+import acc from "../../images/icons/contacts.png";
+import order from "../../images/icons/shopping-cart.png";
 import { Link } from "react-router-dom";
+import Category from "../Category/Category";
 
 class Header extends Component {
   render() {
+    let linksMarkup = this.props.links.map((link, index, type) => {
+      return (
+        <div key={index++} className="col-md-2 m-auto">
+          <ul className="nav">
+            <li className="nav-item">
+              <div className="nav-link active">
+                <Link to={`/category/${link.link}`}>{link.name}</Link>
+              </div>
+            </li>
+          </ul>
+        </div>
+      );
+    });
+
     return (
       <div className="container">
         <div className="row">
@@ -20,8 +35,8 @@ class Header extends Component {
           <div className="col-md-12 m-auto">
             <nav className="navbar">
               <div className="col-md-2 m-auto">
-                <Link to={`/mainPage`}>
-                  <img src={logo} alt="Logo sklepu" className="img-thumbnail" />
+                <Link to={`/`}>
+                  <img src={logo} alt="Logo sklepu" />
                 </Link>
               </div>
 
@@ -38,86 +53,26 @@ class Header extends Component {
               </form>
 
               <div className="col-md-2 m-auto">
-                <a className="btn btn-outline-success" href="registration.html">
-                  {
-                    //   <img src={acc}>Twoje konto</img>
-                  }
-                </a>
+                <div className="btn btn-outline-success">
+                  <Link to={`/acc`}>
+                    <img src={acc} alt="Account" className="img-icon" />
+                    Twoje konto
+                  </Link>
+                </div>
               </div>
 
               <div className="col-md-2 m-auto">
-                <a className="btn btn-outline-success" href="#">
-                  {
-                    //   <img src={order}>Koszyk</img>
-                  }
-                </a>
+                <div className="btn btn-outline-success">
+                  <img src={order} alt="Shopping cart" className="img-icon" />
+                  Twój koszyk
+                </div>
               </div>
             </nav>
           </div>
         </div>
 
         <div className="menu">
-          <div className="row">
-            <div className="col-md-2 m-auto">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                    Mięsa
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-md-2 m-auto">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                    Nabiał
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-md-2 m-auto">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                    Pieczywo
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-md-2 m-auto">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                    Owoce
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-md-2 m-auto">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                    Słodycze
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-md-2 m-auto">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                    Napoje
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <div className="row">{linksMarkup}</div>
         </div>
       </div>
     );
