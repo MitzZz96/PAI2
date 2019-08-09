@@ -2,6 +2,7 @@ package pl.pai2.pai2.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,8 @@ public class ProductController {
     /**
      * api/product/kategoria_produktu/
      */
-    @PostMapping("")
-    public ResponseEntity<?> createNewProduct(@Valid @RequestBody Product product, BindingResult result) {
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity<?> createNewProduct(@Valid @RequestParam Product product, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if (errorMap != null) return errorMap;
