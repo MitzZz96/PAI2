@@ -50,4 +50,12 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    public long generateNextId(){
+        long result = 0;
+        for(Category c : findAllCategories()){
+            result = c.getIdCategory() > result ? c.getIdCategory() : result;
+        }
+        return ++result;
+    }
+
 }
