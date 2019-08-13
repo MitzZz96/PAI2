@@ -6,7 +6,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.pai2.pai2.domain.Address;
+import pl.pai2.pai2.domain.Contact;
 import pl.pai2.pai2.domain.User;
+import pl.pai2.pai2.services.AddressService;
+import pl.pai2.pai2.services.ContactService;
 import pl.pai2.pai2.services.MapValidationErrorService;
 import pl.pai2.pai2.services.UserService;
 
@@ -22,6 +26,12 @@ public class UserController {
     UserService userService;
 
     @Autowired
+    ContactService contactService;
+
+    @Autowired
+    AddressService addressService;
+
+    @Autowired
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("")
@@ -29,6 +39,12 @@ public class UserController {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if (errorMap != null) return errorMap;
+
+        Address address = user.getAddress();
+        Contact contact = user.getContact();
+
+        addressService.addNewAddress(address);
+        contactService.addNewContact(contact);
 
         User user1 = userService.registerUser(user);
 

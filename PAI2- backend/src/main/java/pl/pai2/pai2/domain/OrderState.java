@@ -2,6 +2,7 @@ package pl.pai2.pai2.domain;
 
 public enum OrderState {
 
+
     PENDING("Oczekujące"),
     AWAITING_PAYMENT("Przyjęte. Oczekujące na zapłatę"),
     SENT("Wysłano"),
