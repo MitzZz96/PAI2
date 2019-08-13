@@ -42,5 +42,9 @@ public class ProductOrderController {
         return new ResponseEntity<>("Product order with id '" + id +  "' was deleted", HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> findAll(){
+        return new ResponseEntity<>(productOrderService.findAll(), HttpStatus.OK);
+    }
 
 }

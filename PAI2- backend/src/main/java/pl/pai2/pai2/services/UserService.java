@@ -6,6 +6,8 @@ import pl.pai2.pai2.domain.User;
 import pl.pai2.pai2.exceptions.UserExistException;
 import pl.pai2.pai2.repositories.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -21,6 +23,10 @@ public class UserService {
         else
             return userRepository.save(user);
 
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 
     public boolean deleteUser(String uid){

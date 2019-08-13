@@ -1,6 +1,7 @@
 package pl.pai2.pai2.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -18,9 +19,12 @@ public class Cart {
 
     private OrderState orderState;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "uid", nullable = false)
-    private User user;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "uid", nullable = false)
+//    private User user;
+
+    @NotBlank(message = "Brak UID")
+    private String uid;
 
     public Cart() {
     }
@@ -65,11 +69,11 @@ public class Cart {
         this.orderState = orderState;
     }
 
-    public User getUser() {
-        return user;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

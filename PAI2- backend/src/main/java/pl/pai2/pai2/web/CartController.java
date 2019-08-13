@@ -40,7 +40,7 @@ public class CartController {
 
     @GetMapping("/user/{uid}")
     public ResponseEntity<?> getUserCart(@PathVariable String uid){
-        Cart cart = cartService.findUserCurrentCartByUid(uid);
+        Cart cart = cartService.findCurrentCartByUid(uid);
 
         return new ResponseEntity<Cart>(cart, HttpStatus.OK);
     }

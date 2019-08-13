@@ -30,6 +30,10 @@ public class ProductOrderService {
             throw new ProductNotFoundException("ProductOrder with id '" + id + "' not found");
     }
 
+    public List<ProductOrder> findAll(){
+        return productOrderRepository.findAll();
+    }
+
     public Optional<ProductOrder> findById(Long id){
         Optional<ProductOrder> productOrder = productOrderRepository.findById(id);
 
