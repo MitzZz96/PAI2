@@ -31,11 +31,8 @@ public class ProductController {
     private MapValidationErrorService mapValidationErrorService;
 
 
-    /**
-     * api/product/kategoria_produktu/
-     */
-    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<?> createNewProduct(@Valid @RequestParam Product product, BindingResult result) {
+    @PostMapping("")
+    public ResponseEntity<?> createNewProduct(@Valid @RequestBody Product product, BindingResult result) {
 
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if (errorMap != null) return errorMap;

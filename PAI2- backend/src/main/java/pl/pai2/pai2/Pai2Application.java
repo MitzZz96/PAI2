@@ -20,12 +20,12 @@ import java.io.IOException;
 @SpringBootApplication
 public class Pai2Application {
 
-	public static void main(String[] args) throws ParseException, IOException {
-		SpringApplication.run(Pai2Application.class, args);
+    public static void main(String[] args) throws ParseException, IOException {
+        SpringApplication.run(Pai2Application.class, args);
         initFirebaseConnection();
     }
 
-	static void initFirebaseConnection() throws IOException {
+    static void initFirebaseConnection() throws IOException {
         FileInputStream serviceAccount =
                 new FileInputStream("D:\\Studia\\Semestr_VI\\PAI2\\PROJEKT\\PAI2\\PAI2- backend\\src\\main\\resources\\projektpai-bca84-firebase-adminsdk-sgoeq-bd47a53428.json");
 
