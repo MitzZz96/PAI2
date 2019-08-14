@@ -18,15 +18,6 @@ public class Contact {
     @NotBlank(message = "E-mail jest wymagany")
     private String email;
 
-//    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
-//    private List<Client> client;
-//
-//    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
-//    private List<Employee> employee;
-//
-//    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
-//    private List<Department> department;
-
     public long getIdContact() {
         return idContact;
     }
@@ -59,27 +50,4 @@ public class Contact {
         this.email = email;
     }
 
-//    public List<Client> getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(List<Client> client) {
-//        this.client = client;
-//    }
-//
-//    public List<Employee> getEmployee() {
-//        return employee;
-//    }
-//
-//    public void setEmployee(List<Employee> employee) {
-//        this.employee = employee;
-//    }
-//
-//    public List<Department> getDepartment() {
-//        return department;
-//    }
-//
-//    public void setDepartment(List<Department> department) {
-//        this.department = department;
-//    }
 }
