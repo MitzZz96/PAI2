@@ -1,12 +1,28 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import fire from "../../Config/Fire";
+import { Link } from "react-router-dom";
 
 export class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    user: {}
   };
+
+  componentDidMount() {
+    const { user } = this.props;
+    this.setState({
+      user
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { user } = nextProps;
+    this.setState({
+      user
+    });
+  }
 
   login = e => {
     e.preventDefault();
@@ -17,6 +33,30 @@ export class Login extends Component {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  signUp = e => {
+    e.preventDefault();
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(u => {
+        console.log(u);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    this.moveWin();
+  };
+
+  moveWin = () => {
+    setTimeout(function() {
+      window.location.href = "/register";
+    }, 2000);
+  };
+
+  text = () => {
+    console.log("twoja stara");
   };
 
   handleChange = e => {
@@ -31,7 +71,7 @@ export class Login extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
+              <h1 className="display-4 text-center">Logowanie</h1>
               <form onSubmit={this.login}>
                 <div className="form-group">
                   <input
@@ -39,7 +79,7 @@ export class Login extends Component {
                     className={classnames("form-control form-control-lg", {
                       //   "is-invalid": errors.username
                     })}
-                    placeholder="Email Address"
+                    placeholder="Adres Email"
                     name="email"
                     value={this.state.email}
                     onChange={this.handleChange}
@@ -54,7 +94,7 @@ export class Login extends Component {
                     className={classnames("form-control form-control-lg", {
                       //   "is-invalid": errors.password
                     })}
-                    placeholder="Password"
+                    placeholder="Hasło"
                     name="password"
                     value={this.state.password}
                     onChange={this.handleChange}
@@ -63,7 +103,21 @@ export class Login extends Component {
                     <div className="invalid-feedback">{errors.password}</div>
                  )} */}
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+
+                <button
+                  type="submit"
+                  className="btn btn-info mx-auto btn-lg btn-block"
+                  onClick={this.login}
+                >
+                  Zaloguj
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-info mx-auto btn-lg btn-block"
+                  onClick={this.signUp}
+                >
+                  Zarejestruj
+                </button>
               </form>
             </div>
           </div>

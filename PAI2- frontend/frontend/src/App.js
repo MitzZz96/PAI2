@@ -14,6 +14,7 @@ import Register from "./components/UserManagment/Register";
 import Login from "./components/UserManagment/Login";
 import Acc from "./components/UserManagment/Acc";
 import fire from "./Config/Fire";
+import { Basket } from "./components/Basket/Basket";
 
 class App extends Component {
   state = {
@@ -29,10 +30,10 @@ class App extends Component {
       console.log(user);
       if (user) {
         this.setState({ user });
-        //localStorage.setItem("user", user.uid);
+        // localStorage.setItem("user", user.uid);
       } else {
         this.setState({ user: null });
-        //localStorage.removeItem("user");
+        // localStorage.removeItem("user");
       }
     });
   }
@@ -52,23 +53,34 @@ class App extends Component {
           <div className="App">
             <Header links={links} />
             <Route exact path="/" component={MainPage} />
-            {/*{this.state.user ? <MainPage /> : <Login />}*/}
-            <Route exact path="/acc" component={Acc} />
-            <Route exact path="/register" component={Register} />
+            <Route
+              exact
+              path="/acc"
+              render={props => <Acc user={this.state} {...props} />}
+            />
+            <Route
+              exact
+              path="/register"
+              render={props => <Register user={this.state} {...props} />}
+            />
             <Route exact path="/login" component={Login} />
             <Switch>
               <Route exact path="/addProduct" component={AddProduct} />
+              <Route exact path="/basket" component={Basket} />
               <Route
                 exact
                 path="/category"
                 render={props => <Category links={links} {...props} />}
               />
-              <Route path="/category/:category_name" component={Category} />
+              <Route
+                exact
+                path="/category/:category_name"
+                render={props => <Category links={links} {...props} />}
+              />
               <Route
                 path="/category/category_name/product_name"
                 component={ProductDetails}
               />
-              } />
             </Switch>
             <Footer />
           </div>

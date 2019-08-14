@@ -3,7 +3,7 @@ import { GET_CATEGORIES, GET_CATEGORY, GET_ERRORS } from "./types";
 
 export const getCategory = idCategory => async dispatch => {
   try {
-    const res = await axios.get(`/api/product/category/${idCategory}`);
+    const res = await axios.get(`/api/category/${idCategory}`);
     dispatch({
       type: GET_CATEGORY,
       payload: res.data

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { getProductsFromCategory } from "../../actions/productActions";
+import { getAllCategories } from "../../actions/categoryActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Item from "./Item";
@@ -9,6 +10,7 @@ class Category extends Component {
   state = {
     search: "",
     products: [],
+    categories: [],
     direction: {
       price: "asc"
     }
@@ -21,14 +23,37 @@ class Category extends Component {
     // });
     const { category_name } = this.props.match.params;
     this.props.getProductsFromCategory(category_name);
+    this.props.getAllCategories();
   }
 
   componentWillReceiveProps(nextProps) {
     const { products } = nextProps.product;
+    const { categories } = nextProps.categories;
     this.setState({
-      products
+      products,
+      categories
     });
   }
+
+  // componentDidUpdate() {
+  //   let nazwaKategorii = this.state.products
+  //     .map(cat => {
+  //       return cat.category;
+  //     })
+  //     .map(name => {
+  //       return name.name;
+  //     });
+  //   const kat = nazwaKategorii[0];
+  //   // const { category_name } = this.props.match.params;
+  //   // this.props.getProductsFromCategory(category_name);
+
+  //   console.log(kat);
+  // }
+
+  // componentDidUpdate() {
+  //   const { category_name } = this.props.match.params;
+  //   this.props.getProductsFromCategory(category_name);
+  // }
 
   onchange = e => {
     this.setState({ search: e.target.value });
@@ -87,14 +112,16 @@ class Category extends Component {
 
 Category.propTypes = {
   getProductsFromCategory: PropTypes.func.isRequired,
+  getAllCategories: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  product: state.product
+  product: state.product,
+  categories: state.categories
 });
 
 export default connect(
   mapStateToProps,
-  { getProductsFromCategory }
+  { getProductsFromCategory, getAllCategories }
 )(Category);

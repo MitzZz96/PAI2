@@ -453,6 +453,17 @@ a:hover {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+.card-body.order {
+  font: 15px Arial;
+  color: #000000;
+  cursor: pointer;
+  text-align: center;
+}
+
+.order {
+  width: 15rem;
+}
+
 .acc {
   width: 18rem;
 }
