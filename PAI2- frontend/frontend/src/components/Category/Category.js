@@ -84,20 +84,31 @@ class Category extends Component {
     return (
       <div className="container">
         <div className="main">
-          <center>
+          <center className="product_detarman">
             <h1>Dział produktów {category_name}</h1>
           </center>
 
-          <div className="col-md-3">
-            <input
-              className="form-control "
-              type="search"
-              placeholder="Wyszukaj"
-              aria-label="Search"
-              onChange={this.onchange}
-            />
-            <button onClick={() => this.sortByPrice("price")}>Sortuj</button>
+          <div className="row">
+            <div className="col-md-3">
+              <input
+                className="form-control "
+                type="search"
+                placeholder="Wyszukaj"
+                aria-label="Search"
+                onChange={this.onchange}
+              />
+            </div>
+
+            <div className="col-md-3">
+              <button
+                className="sort_button"
+                onClick={() => this.sortByPrice("price")}
+              >
+                Sortuj
+              </button>
+            </div>
           </div>
+
           <div className="col-md-3" />
 
           <div className="row">

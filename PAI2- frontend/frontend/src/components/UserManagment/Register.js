@@ -14,16 +14,16 @@ export class Register extends Component {
     isClient: true,
     address: {
       city: "",
-      homeNumber: 0,
-      localNumber: 0,
+      homeNumber: null,
+      localNumber: null,
       streetAddress: "",
       zipCode: "",
       stateOrProvince: ""
     },
     contact: {
       email: "",
-      number1: 0,
-      number2: 0
+      number1: null,
+      number2: null
     }
   };
 
