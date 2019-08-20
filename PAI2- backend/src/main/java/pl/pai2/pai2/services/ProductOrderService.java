@@ -3,7 +3,7 @@ package pl.pai2.pai2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.pai2.pai2.domain.Cart;
-import pl.pai2.pai2.domain.Product;
+import pl.pai2.pai2.domain.OrderState;
 import pl.pai2.pai2.domain.ProductOrder;
 import pl.pai2.pai2.exceptions.ProductNotFoundException;
 import pl.pai2.pai2.repositories.ProductOrderRepository;
@@ -17,7 +17,16 @@ public class ProductOrderService {
     @Autowired
     private ProductOrderRepository productOrderRepository;
 
+    @Autowired
+    private CartService cartService;
+
     public ProductOrder addProductOrder(ProductOrder productOrder){
+        System.out.println("Cart status : " + productOrder.getCart().getIdCart());
+        Cart cart = cartService.findCartById(productOrder.getCart().getIdCart());
+        if(cart.getOrderState() == OrderState.EMPTY) {
+            cart.setOrderState(OrderState.PENDING);
+            cartService.createOrUpdateCart(cart);
+        }
         return productOrderRepository.save(productOrder);
     }
 

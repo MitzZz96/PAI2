@@ -3,7 +3,6 @@ package pl.pai2.pai2.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ import pl.pai2.pai2.domain.ProductOrder;
 import pl.pai2.pai2.services.CartService;
 import pl.pai2.pai2.services.MapValidationErrorService;
 
-import javax.validation.Path;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class CartController {
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if (errorMap != null) return errorMap;
 
-        Cart cart1 = cartService.createNewCart(cart);
+        Cart cart1 = cartService.createOrUpdateCart(cart);
 
         return new ResponseEntity<Cart>(cart1, HttpStatus.CREATED);
     }

@@ -29,7 +29,7 @@ public class UserService {
             Cart cart = new Cart();
             cart.setUid(user.getUid());
             cart.setOrderState(OrderState.EMPTY);
-            cartService.createNewCart(cart);
+            cartService.createOrUpdateCart(cart);
             return userRepository.save(user);
         }
     }

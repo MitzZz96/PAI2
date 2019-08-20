@@ -28,7 +28,7 @@ public class CartService {
     private  ProductService productService;
 
 
-    public Cart createNewCart(Cart cart){
+    public Cart createOrUpdateCart(Cart cart){
         return cartRepository.save(cart);
     }
 
@@ -51,11 +51,29 @@ public class CartService {
     }
 
 // TODO : adekwatne metody do zmiany stanow, przetestowac ta nizej
-    public void completeOrder(String uid){
-        Cart cart = findCurrentCartByUid(uid);
+    public void completeOrder(String uid, Cart cart){
         if(cart.getOrderState() == OrderState.SENT) {
             cart.setOrderState(OrderState.COMPLETED);
             cart.setDeliveryDate(new Date());
+
+            cartRepository.save(cart);
+
+            Cart newCart = new Cart();
+            newCart.setUid(uid);
+            newCart.setOrderState(OrderState.EMPTY);
+            cartRepository.save(newCart);
+
+        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
+            throw  new PaymentException("Waiting for payment");
+        else
+            throw new OrderNotDeliveredException("The order has not been delivered yet");
+    }
+
+    public void changeOrderState(String uid, OrderState orderState){
+        Cart cart = findCurrentCartByUid(uid);
+        if(orderState == OrderState.COMPLETED){
+            completeOrder(uid, cart);
+        } else if(orderState == OrderState.SENT){
 
             List<ProductOrder> orders = findCurrentProductOrders(uid);
 
@@ -67,18 +85,6 @@ public class CartService {
                 productService.saveOrUpdateProduct(p);
             }
 
-            cartRepository.save(cart);
-        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
-            throw  new PaymentException("Waiting for payment");
-        else
-            throw new OrderNotDeliveredException("The order has not been delivered yet");
-    }
-
-    public void changeOrderState(String uid, OrderState orderState){
-        Cart cart = findCurrentCartByUid(uid);
-        if(orderState == OrderState.COMPLETED){
-            completeOrder(uid);
-        } else if(orderState == OrderState.SENT){
             cart.setShipDate(new Date());
             cart.setOrderState(orderState);
             cartRepository.save(cart);
