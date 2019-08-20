@@ -27,14 +27,6 @@ public class Address {
     @NotBlank(message = "Pole województwo jest wymagane")
     private String stateOrProvince;
 
-//    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
-//    private List<Client> clients;
-//
-//    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
-//    private List<Employee> employees;
-//
-//    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
-//    private List<Department> departments;
 
     public long getIdAddress() {
         return idAddress;
@@ -97,8 +89,7 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return idAddress == address.idAddress &&
-                homeNumber == address.homeNumber &&
+        return homeNumber == address.homeNumber &&
                 localNumber == address.localNumber &&
                 city.equals(address.city) &&
                 streetAddress.equals(address.streetAddress) &&

@@ -50,7 +50,6 @@ public class CartService {
             throw new ProductNotFoundException("User with uid '" + uid + "' has no cart");
     }
 
-// TODO : adekwatne metody do zmiany stanow, przetestowac ta nizej
     public void completeOrder(String uid, Cart cart){
         if(cart.getOrderState() == OrderState.SENT) {
             cart.setOrderState(OrderState.COMPLETED);

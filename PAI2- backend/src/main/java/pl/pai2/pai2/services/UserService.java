@@ -2,12 +2,15 @@ package pl.pai2.pai2.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.pai2.pai2.domain.Address;
 import pl.pai2.pai2.domain.Cart;
 import pl.pai2.pai2.domain.OrderState;
 import pl.pai2.pai2.domain.User;
 import pl.pai2.pai2.exceptions.UserExistException;
 import pl.pai2.pai2.repositories.UserRepository;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -70,6 +73,13 @@ public class UserService {
             throw new UserExistException("User with uid '" + uid + "' does not exist");
         else
             return user;
+    }
+
+    public ArrayList<Float> getUserLocationCoordinates(String uid) throws IOException {
+        MapsService mapsService = new MapsService();
+        Address a = findUserByUid(uid).getAddress();
+        String address = a.getStreetAddress() + " " + a.getHomeNumber() + " , " + a.getZipCode() + " , " + a.getCity();
+        return mapsService.getWaypointByName(address).getFeatures().get(0).getCenter();
     }
 
 
