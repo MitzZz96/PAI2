@@ -10,6 +10,9 @@ import pl.pai2.pai2.repositories.CartRepository;
 import pl.pai2.pai2.repositories.ProductOrderRepository;
 import pl.pai2.pai2.repositories.UserRepository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,7 +28,7 @@ public class CartService {
     private  ProductService productService;
 
 
-    public Cart createNewCart(Cart cart){
+    public Cart createOrUpdateCart(Cart cart){
         return cartRepository.save(cart);
     }
 
@@ -47,23 +50,48 @@ public class CartService {
             throw new ProductNotFoundException("User with uid '" + uid + "' has no cart");
     }
 
-
-    public void completeOrder(String uid){
-        Cart cart = findCurrentCartByUid(uid);
+// TODO : adekwatne metody do zmiany stanow, przetestowac ta nizej
+    public void completeOrder(String uid, Cart cart){
         if(cart.getOrderState() == OrderState.SENT) {
             cart.setOrderState(OrderState.COMPLETED);
+            cart.setDeliveryDate(new Date());
+
+            cartRepository.save(cart);
+
+            Cart newCart = new Cart();
+            newCart.setUid(uid);
+            newCart.setOrderState(OrderState.EMPTY);
+            cartRepository.save(newCart);
+
+        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
+            throw  new PaymentException("Waiting for payment");
+        else
+            throw new OrderNotDeliveredException("The order has not been delivered yet");
+    }
+
+    public void changeOrderState(String uid, OrderState orderState){
+        Cart cart = findCurrentCartByUid(uid);
+        if(orderState == OrderState.COMPLETED){
+            completeOrder(uid, cart);
+        } else if(orderState == OrderState.SENT){
 
             List<ProductOrder> orders = findCurrentProductOrders(uid);
 
             for (ProductOrder o : orders) {
                 Product p = o.getProduct();
+                System.out.println("cart : " + cart.getSummaryCost() + "  |  product : " + o.getSummaryPrice());
+                cart.setSummaryCost(cart.getSummaryCost() + o.getSummaryPrice());
                 p.setQuantity(p.getQuantity() - o.getQuantity());
                 productService.saveOrUpdateProduct(p);
             }
-        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
-            throw  new PaymentException("Waiting for payment");
-        else
-            throw new OrderNotDeliveredException("The order has not been delivered yet");
+
+            cart.setShipDate(new Date());
+            cart.setOrderState(orderState);
+            cartRepository.save(cart);
+        } else {
+            cart.setOrderState(orderState);
+            cartRepository.save(cart);
+        }
     }
 
     public Cart findCurrentCartByUid(String uid){

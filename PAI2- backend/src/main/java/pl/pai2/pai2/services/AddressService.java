@@ -19,7 +19,7 @@ public class AddressService {
     public Address addNewAddress(Address address) {
         for(Address a : addressRepository.findAll())
             if(a.equals(address))
-                throw new ProductNotFoundException("Address : " + a.getIdAddress() + " already exist");
+                return address;
 
         addressRepository.save(address);
         return address;
