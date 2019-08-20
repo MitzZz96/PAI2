@@ -10,6 +10,9 @@ import pl.pai2.pai2.repositories.CartRepository;
 import pl.pai2.pai2.repositories.ProductOrderRepository;
 import pl.pai2.pai2.repositories.UserRepository;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -47,23 +50,42 @@ public class CartService {
             throw new ProductNotFoundException("User with uid '" + uid + "' has no cart");
     }
 
-
+// TODO : adekwatne metody do zmiany stanow, przetestowac ta nizej
     public void completeOrder(String uid){
         Cart cart = findCurrentCartByUid(uid);
         if(cart.getOrderState() == OrderState.SENT) {
             cart.setOrderState(OrderState.COMPLETED);
+            cart.setDeliveryDate(new Date());
 
             List<ProductOrder> orders = findCurrentProductOrders(uid);
 
             for (ProductOrder o : orders) {
                 Product p = o.getProduct();
+                System.out.println("cart : " + cart.getSummaryCost() + "  |  product : " + o.getSummaryPrice());
+                cart.setSummaryCost(cart.getSummaryCost() + o.getSummaryPrice());
                 p.setQuantity(p.getQuantity() - o.getQuantity());
                 productService.saveOrUpdateProduct(p);
             }
+
+            cartRepository.save(cart);
         } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
             throw  new PaymentException("Waiting for payment");
         else
             throw new OrderNotDeliveredException("The order has not been delivered yet");
+    }
+
+    public void changeOrderState(String uid, OrderState orderState){
+        Cart cart = findCurrentCartByUid(uid);
+        if(orderState == OrderState.COMPLETED){
+            completeOrder(uid);
+        } else if(orderState == OrderState.SENT){
+            cart.setShipDate(new Date());
+            cart.setOrderState(orderState);
+            cartRepository.save(cart);
+        } else {
+            cart.setOrderState(orderState);
+            cartRepository.save(cart);
+        }
     }
 
     public Cart findCurrentCartByUid(String uid){

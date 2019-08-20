@@ -5,6 +5,7 @@ public enum OrderState {
     EMPTY("Pusty"),
     PENDING("Oczekujące"),
     AWAITING_PAYMENT("Przyjęte. Oczekujące na zapłatę"),
+    PAID("Zapłacone. Oczekujące na wysyłkę"),
     SENT("Wysłano"),
     COMPLETED("Zakończone"),
     CANCELLED("Anulowane");

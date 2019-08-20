@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.pai2.pai2.domain.Cart;
+import pl.pai2.pai2.domain.OrderState;
 import pl.pai2.pai2.domain.ProductOrder;
 import pl.pai2.pai2.services.CartService;
 import pl.pai2.pai2.services.MapValidationErrorService;
@@ -50,6 +51,12 @@ public class CartController {
         List<ProductOrder> orders = cartService.findCurrentProductOrders(uid);
 
         return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{uid}/change_state/{state}")
+    public ResponseEntity<?> changeOrderState(@PathVariable String uid, @PathVariable OrderState state){
+        cartService.changeOrderState(uid, state);
+        return new ResponseEntity<>("Order state changed to " + state, HttpStatus.OK);
     }
 
 }

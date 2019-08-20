@@ -1,5 +1,7 @@
 package pl.pai2.pai2.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -13,8 +15,10 @@ public class Cart {
 
     private double summaryCost;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date deliveryDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date shipDate;
 
     private OrderState orderState;
