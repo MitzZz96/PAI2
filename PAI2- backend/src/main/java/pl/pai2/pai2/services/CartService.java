@@ -50,6 +50,10 @@ public class CartService {
             throw new ProductNotFoundException("User with uid '" + uid + "' has no cart");
     }
 
+    public List<Cart> findAll(){
+        return cartRepository.findAll();
+    }
+
     public void completeOrder(String uid, Cart cart){
         if(cart.getOrderState() == OrderState.SENT) {
             cart.setOrderState(OrderState.COMPLETED);
