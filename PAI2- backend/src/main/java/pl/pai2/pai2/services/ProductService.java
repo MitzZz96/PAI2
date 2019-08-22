@@ -3,7 +3,6 @@ package pl.pai2.pai2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.pai2.pai2.domain.Product;
-import pl.pai2.pai2.domain.Warehouse;
 import pl.pai2.pai2.exceptions.ProductNameException;
 import pl.pai2.pai2.repositories.ProductRepository;
 
@@ -34,6 +33,16 @@ public class ProductService {
             throw new ProductNameException("Product Name '"+ name +"' does not exists");
         }
         return products;
+    }
+
+    public Product findById(long idProduct){
+
+        Product product = productRepository.findById(idProduct);
+
+        if(product == null){
+            throw new ProductNameException("Product Name '"+ idProduct +"' does not exists");
+        }
+        return product;
     }
 
     public List<Product> findAllProducts(){

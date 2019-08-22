@@ -1,0 +1,352 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  background-color: #e6e6e6;
+}
+
+/* ---------------HEADER.js - Navbar-------------------------- */
+
+.container .navbar {
+  background-color: #fff8e1;
+  border-top: 20px solid #757575;
+  border-left: 2px solid #4b4a4a;
+  border-right: 2px solid #4b4a4a;
+
+  margin: 0 0;
+}
+
+.container .navbar .logo_shop {
+  margin-left: 80px;
+}
+
+.container .navbar .icon_user {
+  margin-left: 350px;
+}
+
+.container .navbar .icon_basket {
+  margin-right: 30px;
+}
+
+.container .navbar .btn.btn-outline-success {
+  background-color: #757575;
+  border: 2px solid #4b4a4a;
+  color: white;
+
+  width: 170px;
+  letter-spacing: 2px;
+}
+.container .navbar .btn.btn-outline-success:hover {
+  background-color: rgba(113, 124, 91, 0.959);
+}
+
+/*------------------------Header.js - menu------------------*/
+
+.container .menu {
+  background-color: #757575;
+  border-top: 2px solid #4b4a4a;
+  border-bottom: 2px solid #4b4a4a;
+}
+
+.container .menu .nav a {
+  color: white;
+
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.container .menu .nav {
+  font-size: 15px;
+}
+
+.container .menu .nav .nav-item {
+  width: 160px;
+
+  /* cursor: pointer; */
+}
+
+.container .menu .nav .nav-item:hover {
+  background-color: rgba(113, 124, 91, 0.959);
+}
+
+/*----------------------------MainPage.js ------------------------------*/
+.container .main {
+  background-color: #fff8e1;
+  padding-bottom: 60px;
+  border-left: 2px solid rgba(55, 56, 50, 0.959);
+  border-right: 2px solid rgba(55, 56, 50, 0.959);
+}
+.container .main .section_main .title {
+  color: rgba(55, 56, 50, 0.959);
+  text-align: center;
+  padding-top: 20px;
+  letter-spacing: 2px;
+}
+
+.container .main .section_main .figure_main .card.card.main-page {
+  background-color: #757575;
+
+  margin: 25px;
+}
+
+.container
+  .main
+  .section_main
+  .figure_main
+  .card.card.main-page
+  .card-body
+  .card-title {
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.container .main .section_main .figure_main .card.main-page:hover {
+  background-color: rgba(113, 124, 91, 0.959);
+  text-decoration: none;
+  border-color: black;
+  border: 1px solid rgba(113, 124, 91, 0.958);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: bold;
+}
+
+/*-----------------------------FOOTER.js-------------------------------------*/
+
+.container .rectangle {
+  background-color: #757575;
+  border-left: 2px solid rgba(55, 56, 50, 0.959);
+  border-right: 2px solid rgba(55, 56, 50, 0.959);
+  border-top: 2px solid rgba(55, 56, 50, 0.959);
+  border-bottom: 2px solid rgba(55, 56, 50, 0.959);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin: 0;
+}
+
+.container .rectangle .footer-copyright.mb-0 {
+  color: white;
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+/*----------------------------CATEGORY.JS---------------------------------*/
+
+.container .main .product_detarman h1 {
+  color: rgb(80, 75, 75);
+  padding-top: 15px;
+}
+
+.container .main {
+  margin: 0px 0px;
+}
+
+.container .main .search_engine .form-control {
+  margin: 10px 15px;
+  border: 1px solid grey;
+  width: 55%;
+}
+.container .main .sort_button {
+  border: 1px solid black;
+  position: relative;
+  left: 220px;
+  top: -50px;
+  height: 50%;
+  width: 20%;
+  border: 1px solid grey;
+  letter-spacing: 1px;
+  padding: 0;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: rgb(80, 75, 75);
+  color: #fff;
+}
+
+.container .main .sort_button:hover {
+  background-color: rgba(113, 124, 91, 0.959);
+}
+
+/*.............................PRODUCTITEM.JS-----------------------------*/
+
+.card.product {
+  margin: 30px;
+  border: 1px solid gray;
+  background-color: #fff;
+}
+
+.btn.btn-outline-secondary {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
+  width: 14rem;
+  margin-bottom: 0;
+  background-color: rgba(85, 84, 81, 0.959);
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.btn.btn-outline-secondary:hover {
+  background-color: rgba(113, 124, 91, 0.958);
+}
+
+.product {
+  min-width: 0;
+  background-color: white;
+  width: 14rem;
+}
+img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+}
+
+.card-body .description p {
+  font-family: arial;
+  font-weight: 400;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 19px;
+  color: #333;
+  margin: 0;
+}
+
+.card-body .description {
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.card-body .description-input {
+  color: #333;
+  width: 50px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/*-----------------------------------LOGIN.js-------------------------------*/
+
+.login .container {
+  background-color: #fff8e1;
+
+  letter-spacing: 2px;
+  color: black;
+
+  padding-bottom: 120px;
+  border-left: 2px solid rgba(55, 56, 50, 0.959);
+  border-right: 2px solid rgba(55, 56, 50, 0.959);
+  margin: 0;
+}
+
+.login .container .border-log {
+  border: 2px solid #d6dfcb;
+  padding-bottom: 20px;
+  background-color: rgb(241, 241, 241);
+  margin-top: 50px;
+  box-shadow: 10px 5px 5px black;
+  border: 2px solid black;
+}
+
+.login .container .border-log h1 {
+  box-shadow: 10px 5px 5px black;
+}
+
+.login .container .form-group {
+  padding-top: 20px;
+  margin: 20px auto 0 auto;
+  width: 50%;
+}
+
+.login .container .form-group .form-control.form-control-lg {
+  letter-spacing: 2px;
+  border: 2px solid black;
+  box-shadow: 10px 5px 5px black;
+}
+
+.login .container .button_log {
+  margin: 50px auto 0 auto;
+  width: 50%;
+}
+
+.login .container .button_log .btn.btn-info.mx-auto.btn-lg.btn-block {
+  background-color: rgba(85, 84, 81, 0.959);
+  border: 2px solid black;
+  letter-spacing: 2px;
+  box-shadow: 10px 5px 5px black;
+}
+
+.login .container .button_log .btn.btn-info.mx-auto.btn-lg.btn-block:hover {
+  background-color: rgba(113, 124, 91, 0.958);
+}
+
+/*-----------------------------REGISTRATION.HTML--------------------------*/
+
+.register .container .form-register {
+  background-color: #fff8e1;
+}
+
+.register .container .form-register .form-container {
+  border: 2px solid black;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+/*----------------------------ADRIAN------------------------------------*/
+
+/*----------------------------PRODUCT------------------------------------*/
+
+.card-body.order:hover {
+  color: black;
+  background-color: #ff7e21;
+  text-decoration: none;
+  border-color: black;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-body.order {
+  font: 15px Arial;
+  color: #000000;
+  cursor: pointer;
+  text-align: center;
+}
+
+.acc {
+  width: 18rem;
+}
+
+.acc .card-header {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  color: #000000;
+}
+
+.acc .list-group .list-group-item .btn {
+  width: 200px;
+  display: inline-block;
+}
+
+.card .card-body .btn.btn-primary {
+  background-color: #33b622;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+.asd {
+  text-align: center;
+}

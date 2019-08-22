@@ -6,11 +6,12 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,6 +110,7 @@ public class Product {
     }
 
     @Override
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -123,5 +125,6 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(getIdProduct(), getName(), getPrice(), getDescription(), getCategory());
+
     }
 }

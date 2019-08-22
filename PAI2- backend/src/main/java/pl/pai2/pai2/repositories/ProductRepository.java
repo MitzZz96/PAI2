@@ -3,7 +3,6 @@ package pl.pai2.pai2.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.pai2.pai2.domain.Product;
-import pl.pai2.pai2.domain.Warehouse;
 
 import java.util.List;
 
@@ -11,6 +10,7 @@ import java.util.List;
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findByName(String name);
+    Product findById(long idProduct);
 
     @Override
     List<Product> findAll();
