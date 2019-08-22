@@ -11,7 +11,7 @@ export class Register extends Component {
     uid: "",
     firstName: "",
     lastName: "",
-    isClient: true,
+    client: true,
     address: {
       city: "",
       homeNumber: null,
@@ -71,7 +71,7 @@ export class Register extends Component {
       uid: this.state.uid,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      isClient: true,
+      client: true,
       address: {
         city: this.state.address.city,
         homeNumber: this.state.address.homeNumber,

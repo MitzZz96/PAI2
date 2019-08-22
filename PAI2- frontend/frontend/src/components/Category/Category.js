@@ -11,19 +11,25 @@ class Category extends Component {
     search: "",
     products: [],
     categories: [],
+    category: "",
     direction: {
       price: "asc"
-    }
+    },
+    search_type: true
   };
 
   componentDidMount() {
-    // axios.get(`/api/product/${idCategory}`).then(res => {
-    //   console.log(res);
-    //   this.setState({ api: res.data });
-    // });
     const { category_name } = this.props.match.params;
     this.props.getProductsFromCategory(category_name);
     this.props.getAllCategories();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.state.category !== prevProps.match.params.category_name) {
+      const { category_name } = this.props.match.params;
+      this.props.getProductsFromCategory(category_name);
+      this.props.getAllCategories();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,29 +37,10 @@ class Category extends Component {
     const { categories } = nextProps.categories;
     this.setState({
       products,
-      categories
+      categories,
+      category: nextProps.match.params.category_name
     });
   }
-
-  // componentDidUpdate() {
-  //   let nazwaKategorii = this.state.products
-  //     .map(cat => {
-  //       return cat.category;
-  //     })
-  //     .map(name => {
-  //       return name.name;
-  //     });
-  //   const kat = nazwaKategorii[0];
-  //   // const { category_name } = this.props.match.params;
-  //   // this.props.getProductsFromCategory(category_name);
-
-  //   console.log(kat);
-  // }
-
-  // componentDidUpdate() {
-  //   const { category_name } = this.props.match.params;
-  //   this.props.getProductsFromCategory(category_name);
-  // }
 
   onchange = e => {
     this.setState({ search: e.target.value });
@@ -69,6 +56,13 @@ class Category extends Component {
       direction: {
         [key]: this.state.direction[key] === "asc" ? "desc" : "asc"
       }
+    });
+  };
+
+  handleClick = () => {
+    this.sortByPrice("price");
+    this.setState({
+      search_type: !this.state.search_type
     });
   };
 
@@ -89,26 +83,22 @@ class Category extends Component {
           </center>
 
           <div className="row">
-            <div className="col-md-3">
-              <input
-                className="form-control "
-                type="search"
-                placeholder="Wyszukaj"
-                aria-label="Search"
-                onChange={this.onchange}
-              />
-            </div>
+            <div className="col-6 col-md-4">
+              <div className="search_engine">
+                <input
+                  className="form-control "
+                  type="search"
+                  placeholder="Wyszukaj"
+                  aria-label="Search"
+                  onChange={this.onchange}
+                />
+              </div>
 
-            <div className="col-md-3">
-              <button
-                className="sort_button"
-                onClick={() => this.sortByPrice("price")}
-              >
-                Sortuj
+              <button className="sort_button" onClick={this.handleClick}>
+                {this.state.search_type ? "Sortuj rosnąco" : "Sortuj malejąco"}
               </button>
             </div>
           </div>
-
           <div className="col-md-3" />
 
           <div className="row">

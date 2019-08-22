@@ -39,7 +39,7 @@ public class ContactController {
         return contactService.getAllContacts();
     }
 
-    @GetMapping("/{idContact}")
+    @GetMapping("/get/{idContact}")
     public ResponseEntity<?> getContactById(@PathVariable long idContact) {
         Contact contact = contactService.getContactById(idContact);
         return new ResponseEntity<>(contact, HttpStatus.OK);

@@ -70,59 +70,63 @@ export class Login extends Component {
       <div className="login">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Logowanie</h1>
-              <form onSubmit={this.login}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      //   "is-invalid": errors.username
-                    })}
-                    placeholder="Adres Email"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                  {/* {errors.username && (
-                    <div className="invalid-feedback">{errors.username}</div>
-                 )}*/}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className={classnames("form-control form-control-lg", {
-                      //   "is-invalid": errors.password
-                    })}
-                    placeholder="Hasło"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  {/* {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                 )} */}
-                </div>
+            <div className="col-md-6 m-auto">
+              <div className="border-log">
+                <h1 className="display-4 text-center">Logowanie</h1>
+                <form onSubmit={this.login}>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className={classnames("form-control form-control-lg", {
+                        //   "is-invalid": errors.username
+                      })}
+                      placeholder="Adres Email"
+                      name="email"
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                    />
+                    {/* {errors.username && (
+                      <div className="invalid-feedback">{errors.username}</div>
+                  )}*/}
 
-                <button
-                  type="submit"
-                  className="btn btn-info mx-auto btn-lg btn-block"
-                  onClick={this.login}
-                >
-                  Zaloguj
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-info mx-auto btn-lg btn-block"
-                  onClick={this.signUp}
-                >
-                  Zarejestruj
-                </button>
-              </form>
+                    <br />
+                    <input
+                      type="password"
+                      className={classnames("form-control form-control-lg", {
+                        //   "is-invalid": errors.password
+                      })}
+                      placeholder="Hasło"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                    />
+                    {/* {errors.password && (
+                      <div className="invalid-feedback">{errors.password}</div>
+                  )} */}
+                  </div>
+
+                  <div className="button_log">
+                    <button
+                      type="submit"
+                      className="btn btn-info mx-auto btn-lg btn-block"
+                      onClick={this.login}
+                    >
+                      Zaloguj
+                    </button>
+
+                    <button
+                      type="submit"
+                      className="btn btn-info mx-auto btn-lg btn-block"
+                      onClick={this.signUp}
+                    >
+                      Zarejestruj
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-        <br />
       </div>
     );
   }

@@ -8,6 +8,7 @@ const ItemList = props => {
         key={product.idProduct}
         product={product}
         category_name={product.category_name}
+        user={props.user}
       />
     );
   });

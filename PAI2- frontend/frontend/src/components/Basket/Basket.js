@@ -1,65 +1,83 @@
 import React, { Component } from "react";
+import img from "../../images/test.jpg";
+import BasketItem from "./BasketItem";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classnames from "classnames";
+import fire from "../../Config/Fire";
+import _ from "lodash";
+import {
+  getUserCart,
+  getUser,
+  getUserCartProducts
+} from "../../actions/userActions";
 
-export class Basket extends Component {
+class Basket extends Component {
+  state = {
+    cartProductsOrders: [],
+    userLogged: {},
+    user: {},
+    uid: ""
+  };
+
+  componentDidMount() {
+    var userLog = fire.auth().currentUser;
+    if (userLog) {
+      this.setState({
+        userLogged: userLog,
+        uid: userLog.uid,
+        cartProductsOrders: this.props.address.cartProductsOrders
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.state.uid !== prevProps.address.userLogged.uid) {
+      this.props.getUser(this.state.uid);
+      this.props.getUserCart(this.state.uid);
+      this.props.getUserCartProducts(this.state.uid);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { user } = nextProps.user;
+    const { userLogged } = nextProps.address;
+    const { cartProductsOrders } = nextProps.address;
+    var userLog = fire.auth().currentUser;
+    if (userLog) {
+      this.setState({
+        uid: userLog.uid,
+        user,
+        userLogged,
+        cartProductsOrders
+      });
+    }
+  }
+
+  handleClick = () => {
+    console.log("object");
+  };
+
   render() {
+    let basketItems = this.state.cartProductsOrders.map(product => {
+      return <BasketItem key={product.idProductOrder} product={product} />;
+    });
+
     return (
-      <div className="my-card">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Twój koszyk</h1>
-              <hr />
+      <div className="container">
+        <div className="main">
+          <div className="my-card">
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="display-4 text-center">Twój koszyk</h1>
+                <hr />
 
-              <div className="container">
-                <div className="card card-body mb-2">
-                  <div className="row table-secondary">
-                    <div className="col-7">
-                      <h3 className="mx-auto">Produkt</h3>
-                    </div>
-
-                    <div className="col-3">
-                      <h3 className="mx-auto">Cena detaliczna</h3>
-                    </div>
-
-                    <div className="col-2">
-                      <h3 className="mx-auto">Ilość</h3>
-                    </div>
-                  </div>
-
-                  <div className="row text-center">
-                    <div className="col-2">
-                      <div className="image-container p-2" />
-                    </div>
-                    <div className="col-md-4 col-8">
-                      <p className="align-self-center text-center">
-                        Ceresit Grunt głęboko penetrujący CT17 2 l
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="row table-secondary">
-                    <div className="col-7">
-                      <h5 className="mx-auto">Usuń produkt</h5>
-                    </div>
-
-                    <div className="col-3">
-                      <h5 className="mx-auto">25,99zł</h5>
-                    </div>
-
-                    <div className="col-2 col-sm">
-                      <input
-                        type="text"
-                        min="1"
-                        max="9999"
-                        step="1"
-                        value="1"
-                      />
-                    </div>
-
-                    <div className="col-1">
-                      <h5 className="mx-auto">Suma</h5>
-                    </div>
-                  </div>
+                <div className="container">
+                  {basketItems}
+                  <hr />
+                  <button className="btn btn-info" onClick={this.handleClick}>
+                    zamów
+                  </button>
                 </div>
               </div>
             </div>
@@ -70,4 +88,18 @@ export class Basket extends Component {
   }
 }
 
-export default Basket;
+Basket.propTypes = {
+  getUserCart: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
+  getUserCartProducts: PropTypes.func.isRequired,
+  address: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  address: state.address
+});
+
+export default connect(
+  mapStateToProps,
+  { getUserCart, getUser, getUserCartProducts }
+)(Basket);

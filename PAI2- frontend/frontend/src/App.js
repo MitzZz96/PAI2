@@ -14,7 +14,10 @@ import Register from "./components/UserManagment/Register";
 import Login from "./components/UserManagment/Login";
 import Acc from "./components/UserManagment/Acc";
 import fire from "./Config/Fire";
-import { Basket } from "./components/Basket/Basket";
+import Basket from "./components/Basket/Basket";
+import Address from "./components/UserManagment/Address";
+import Clients from "./components/UserManagment/Clients";
+import Orders from "./components/UserManagment/Orders";
 
 class App extends Component {
   state = {
@@ -53,6 +56,7 @@ class App extends Component {
           <div className="App">
             <Header links={links} />
             <Route exact path="/" component={MainPage} />
+
             <Route
               exact
               path="/acc"
@@ -66,7 +70,14 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <Route exact path="/addProduct" component={AddProduct} />
-              <Route exact path="/basket" component={Basket} />
+              <Route
+                exact
+                path="/basket"
+                render={props => <Basket user={this.state} {...props} />}
+              />
+              <Route exact path="/address" component={Address} />
+              <Route exact path="/clients" component={Clients} />
+              <Route exact path="/orders" component={Orders} />
               <Route
                 exact
                 path="/category"
@@ -75,7 +86,9 @@ class App extends Component {
               <Route
                 exact
                 path="/category/:category_name"
-                render={props => <Category links={links} {...props} />}
+                render={props => (
+                  <Category links={links} user={this.state} {...props} />
+                )}
               />
               <Route
                 path="/category/category_name/product_name"
