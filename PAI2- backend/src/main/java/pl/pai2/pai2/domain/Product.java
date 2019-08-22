@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -107,4 +108,20 @@ public class Product {
         this.updated_At = new Date();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.getPrice(), getPrice()) == 0 &&
+                getIdProduct() == product.getIdProduct() &&
+                getName().equals(product.getName()) &&
+                getDescription().equals(product.getDescription()) &&
+                getCategory().equals(product.getCategory());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdProduct(), getName(), getPrice(), getDescription(), getCategory());
+    }
 }

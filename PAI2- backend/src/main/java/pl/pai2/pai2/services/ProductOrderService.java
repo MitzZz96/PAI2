@@ -20,12 +20,22 @@ public class ProductOrderService {
     @Autowired
     private CartService cartService;
 
-    public ProductOrder addProductOrder(ProductOrder productOrder){
+    public ProductOrder saveOrUpdateProductOrder(ProductOrder productOrder){
         System.out.println("Cart status : " + productOrder.getCart().getIdCart());
         Cart cart = cartService.findCartById(productOrder.getCart().getIdCart());
+
         if(cart.getOrderState() == OrderState.EMPTY) {
             cart.setOrderState(OrderState.PENDING);
             cartService.createOrUpdateCart(cart);
+        }
+        for(ProductOrder p : findByCart(cart)){
+            if(p.getProduct().getIdProduct() == productOrder.getProduct().getIdProduct()){
+                p.setQuantity(p.getQuantity() + productOrder.getQuantity());
+                p.setSummaryPrice(p.getSummaryPrice() + productOrder.getSummaryPrice());
+                System.out.println("ProductOrder duplicate found.");
+                return productOrderRepository.save(p);
+            } else
+                System.out.println("ProductOrder duplicate not found.");
         }
         return productOrderRepository.save(productOrder);
     }

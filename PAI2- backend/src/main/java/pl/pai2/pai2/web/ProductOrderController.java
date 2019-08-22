@@ -2,17 +2,14 @@ package pl.pai2.pai2.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.pai2.pai2.domain.Cart;
 import pl.pai2.pai2.domain.ProductOrder;
 import pl.pai2.pai2.services.MapValidationErrorService;
 import pl.pai2.pai2.services.ProductOrderService;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/productOrder")
@@ -31,7 +28,7 @@ public class ProductOrderController {
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationErrorService(result);
         if (errorMap != null) return errorMap;
 
-        ProductOrder productOrder1 = productOrderService.addProductOrder(productOrder);
+        ProductOrder productOrder1 = productOrderService.saveOrUpdateProductOrder(productOrder);
 
         return new ResponseEntity<ProductOrder>(productOrder1, HttpStatus.CREATED);
     }
