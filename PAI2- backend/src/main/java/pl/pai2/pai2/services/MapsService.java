@@ -17,7 +17,7 @@ public class MapsService {
     public Waypoint getWaypointByName(String name) throws IOException {
         Client client = ClientBuilder.newClient();
         String target = name.replace(" ", "%20");
-        Response response = client.target("https://api.mapbox.com/geocoding/v5/mapbox.places/"+ target + ".json?access_token=pk.eyJ1IjoibWVjaWtrayIsImEiOiJjanlzbng3eXcwMWhmM2xwMnJka3hrcjRjIn0.5BEuGZBstvpKxRvDcLCzJw")
+        Response response = client.target("https://api.mapbox.com/geocoding/v5/mapbox.places/"+ target + ".json?country=PL&access_token=pk.eyJ1IjoibWVjaWtrayIsImEiOiJjanlzbng3eXcwMWhmM2xwMnJka3hrcjRjIn0.5BEuGZBstvpKxRvDcLCzJw")
                 .request(MediaType.TEXT_PLAIN_TYPE)
                 .header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8")
                 .get();

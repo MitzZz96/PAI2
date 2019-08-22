@@ -48,7 +48,7 @@ public class CategoryController {
 
     @GetMapping("/generate")
     public List<Category> generateCategories(){
-        String[] names = {"Dania gotowe i mrozonki", "Kawa i herbata", "Mieso, wedliny i ryby", "Nabial", "Napoje", "owoce i warzywa", "Pieczywo", "Slodycze"};
+        String[] names = {"miesa", "nabial", "pieczywo", "owoce", "slodycze", "napoje"};
         List<Category> categories = new ArrayList<>();
         for(String n : names){
             categories.add(categoryService.saveOrUpdateCategory(new Category(n)));

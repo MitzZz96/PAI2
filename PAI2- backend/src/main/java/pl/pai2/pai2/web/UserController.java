@@ -15,6 +15,7 @@ import pl.pai2.pai2.services.MapValidationErrorService;
 import pl.pai2.pai2.services.UserService;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -70,6 +71,11 @@ public class UserController {
     public ResponseEntity<?> findAll(){
         List<User> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/{uid}/location")
+    public ResponseEntity<?> getUserAddressCoordinates(@PathVariable String uid) throws IOException {
+        return new ResponseEntity<>(userService.getUserLocationCoordinates(uid), HttpStatus.OK);
     }
 
 
