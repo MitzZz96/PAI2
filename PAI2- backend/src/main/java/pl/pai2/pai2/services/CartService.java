@@ -54,17 +54,12 @@ public class CartService {
         return cartRepository.findAll();
     }
 
-    public void completeOrder(String uid, Cart cart){
+    public void completeOrder(Cart cart){
         if(cart.getOrderState() == OrderState.SENT) {
             cart.setOrderState(OrderState.COMPLETED);
             cart.setDeliveryDate(new Date());
 
             cartRepository.save(cart);
-
-            Cart newCart = new Cart();
-            newCart.setUid(uid);
-            newCart.setOrderState(OrderState.EMPTY);
-            cartRepository.save(newCart);
 
         } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
             throw  new PaymentException("Waiting for payment");
@@ -75,7 +70,7 @@ public class CartService {
     public void changeOrderState(String uid, OrderState orderState){
         Cart cart = findCurrentCartByUid(uid);
         if(orderState == OrderState.COMPLETED){
-            completeOrder(uid, cart);
+            completeOrder(findPenultimateUserCart(uid));
         } else if(orderState == OrderState.SENT){
 
             List<ProductOrder> orders = findCurrentProductOrders(uid);
@@ -91,10 +86,20 @@ public class CartService {
             cart.setShipDate(new Date());
             cart.setOrderState(orderState);
             cartRepository.save(cart);
+
+            Cart newCart = new Cart();
+            newCart.setUid(uid);
+            newCart.setOrderState(OrderState.EMPTY);
+            cartRepository.save(newCart);
         } else {
             cart.setOrderState(orderState);
             cartRepository.save(cart);
         }
+    }
+
+    public Cart findPenultimateUserCart(String uid){
+        List<Cart> cart = cartRepository.findCartByUid(uid);
+        return cart.get(cart.size()-2);
     }
 
     public Cart findCurrentCartByUid(String uid){
