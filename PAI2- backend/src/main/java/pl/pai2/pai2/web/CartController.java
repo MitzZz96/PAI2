@@ -13,6 +13,7 @@ import pl.pai2.pai2.services.CartService;
 import pl.pai2.pai2.services.MapValidationErrorService;
 
 import javax.validation.Valid;
+import javax.ws.rs.PATCH;
 import java.util.List;
 
 @RestController
@@ -54,6 +55,11 @@ public class CartController {
         List<ProductOrder> orders = cartService.findCurrentProductOrders(uid);
 
         return new ResponseEntity<>(orders, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{uid}/all")
+    public ResponseEntity<?> getAllUserCarts(@PathVariable String uid){
+        return new ResponseEntity<>(cartService.findAllCartsByUid(uid), HttpStatus.OK);
     }
 
     @GetMapping("/user/{uid}/change_state/{state}")
