@@ -82,7 +82,7 @@ public class CartService {
             cart.setOrderState(orderState);
             cartRepository.save(cart);
         } else if(orderState == OrderState.COMPLETED){
-            if(cart.getOrderState() != OrderState.PAID)
+            if(cart.getOrderState() != OrderState.SENT)
                 throw new OrderNotSentException("Order has not been shipped yet");
 
             cart.setOrderState(orderState);

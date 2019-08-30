@@ -47,9 +47,10 @@ public class ProductOrderService {
         Optional<ProductOrder> productOrder = productOrderRepository.findById(id);
 
         if(productOrder.isPresent()) {
-            productOrderRepository.delete(productOrder.get());
             Cart cart = cartService.findCartById(productOrder.get().getCart().getIdCart());
             cart.setSummaryCost(cart.getSummaryCost() - productOrder.get().getSummaryPrice());
+            cartService.createOrUpdateCart(cart);
+            productOrderRepository.delete(productOrder.get());
             if(findAll().isEmpty())
                 cartService.changeCartOrderState(productOrder.get().getCart().getIdCart(), OrderState.EMPTY);
         } else
