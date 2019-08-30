@@ -3,7 +3,7 @@ package pl.pai2.pai2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.pai2.pai2.domain.Address;
-import pl.pai2.pai2.exceptions.ProductNotFoundException;
+import pl.pai2.pai2.exceptions.DataNotFoundException;
 import pl.pai2.pai2.repositories.AddressRepository;
 
 import javax.transaction.Transactional;
@@ -33,14 +33,14 @@ public class AddressService {
         Address address = addressRepository.findByIdAddress(idAddress);
 
         if (address == null)
-            throw new ProductNotFoundException("Address with ID : " + idAddress + " does not exist");
+            throw new DataNotFoundException("Address with ID : " + idAddress + " does not exist");
 
         return address;
     }
 
     public void deleteAddressById(long idAddress) {
         if (addressRepository.findByIdAddress(idAddress) == null)
-            throw new ProductNotFoundException("Address with ID : " + idAddress + " does not exist");
+            throw new DataNotFoundException("Address with ID : " + idAddress + " does not exist");
 
         addressRepository.deleteById(idAddress);
     }

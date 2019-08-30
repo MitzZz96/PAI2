@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.pai2.pai2.domain.Cart;
 import pl.pai2.pai2.domain.OrderState;
 import pl.pai2.pai2.domain.ProductOrder;
-import pl.pai2.pai2.exceptions.ProductNotFoundException;
+import pl.pai2.pai2.exceptions.DataNotFoundException;
 import pl.pai2.pai2.repositories.ProductOrderRepository;
 
 import java.util.List;
@@ -22,12 +22,15 @@ public class ProductOrderService {
 
     public ProductOrder saveOrUpdateProductOrder(ProductOrder productOrder){
         System.out.println("Cart status : " + productOrder.getCart().getIdCart());
+
         Cart cart = cartService.findCartById(productOrder.getCart().getIdCart());
 
-        if(cart.getOrderState() == OrderState.EMPTY) {
+        cart.setSummaryCost(cart.getSummaryCost() + productOrder.getSummaryPrice());
+        if(cart.getOrderState() == OrderState.EMPTY)
             cart.setOrderState(OrderState.PENDING);
-            cartService.createOrUpdateCart(cart);
-        }
+
+        cartService.createOrUpdateCart(cart);
+
         for(ProductOrder p : findByCart(cart)){
             if(p.getProduct().getIdProduct() == productOrder.getProduct().getIdProduct()){
                 p.setQuantity(p.getQuantity() + productOrder.getQuantity());
@@ -43,10 +46,14 @@ public class ProductOrderService {
     public void removeProductOrder(Long id){
         Optional<ProductOrder> productOrder = productOrderRepository.findById(id);
 
-        if(productOrder.isPresent())
+        if(productOrder.isPresent()) {
             productOrderRepository.delete(productOrder.get());
-        else
-            throw new ProductNotFoundException("ProductOrder with id '" + id + "' not found");
+            Cart cart = cartService.findCartById(productOrder.get().getCart().getIdCart());
+            cart.setSummaryCost(cart.getSummaryCost() - productOrder.get().getSummaryPrice());
+            if(findAll().isEmpty())
+                cartService.changeCartOrderState(productOrder.get().getCart().getIdCart(), OrderState.EMPTY);
+        } else
+            throw new DataNotFoundException("ProductOrder with id '" + id + "' not found");
     }
 
     public List<ProductOrder> findAll(){
@@ -57,7 +64,7 @@ public class ProductOrderService {
         Optional<ProductOrder> productOrder = productOrderRepository.findById(id);
 
         if(productOrder == null)
-            throw new ProductNotFoundException("ProductOrder with id '" + id + "' not found");
+            throw new DataNotFoundException("ProductOrder with id '" + id + "' not found");
         else
             return productOrder;
     }
@@ -66,7 +73,7 @@ public class ProductOrderService {
         List<ProductOrder> productOrders = productOrderRepository.findAllByCart(cart);
 
         if(productOrders == null)
-            throw new ProductNotFoundException("No products found in the cart");
+            throw new DataNotFoundException("No products found in the cart");
         else
             return productOrders;
     }
