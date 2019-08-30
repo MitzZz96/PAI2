@@ -3,15 +3,12 @@ package pl.pai2.pai2.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.pai2.pai2.domain.*;
-import pl.pai2.pai2.exceptions.OrderNotDeliveredException;
+import pl.pai2.pai2.exceptions.OrderNotSentException;
 import pl.pai2.pai2.exceptions.PaymentException;
-import pl.pai2.pai2.exceptions.ProductNotFoundException;
+import pl.pai2.pai2.exceptions.DataNotFoundException;
 import pl.pai2.pai2.repositories.CartRepository;
 import pl.pai2.pai2.repositories.ProductOrderRepository;
-import pl.pai2.pai2.repositories.UserRepository;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +35,7 @@ public class CartService {
         if(cart != null)
             return cart;
         else
-            throw new ProductNotFoundException("Cart with id '" + id + "' not found");
+            throw new DataNotFoundException("Cart with id '" + id + "' not found");
     }
 
     public List<Cart> findAllCartsByUid(String uid){
@@ -47,33 +44,20 @@ public class CartService {
         if(cart != null)
             return cart;
         else
-            throw new ProductNotFoundException("User with uid '" + uid + "' has no cart");
+            throw new DataNotFoundException("User with uid '" + uid + "' has no cart");
     }
 
     public List<Cart> findAll(){
         return cartRepository.findAll();
     }
 
-    public void completeOrder(Cart cart){
-        if(cart.getOrderState() == OrderState.SENT) {
-            cart.setOrderState(OrderState.COMPLETED);
-            cart.setDeliveryDate(new Date());
+    public void changeCartOrderState(Long id, OrderState orderState) {
+        Cart cart = findCartById(id);
+        if(orderState == OrderState.PAID){
+            List<ProductOrder> orders = findCartProductOrders(id);
 
-            cartRepository.save(cart);
-
-        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
-            throw  new PaymentException("Waiting for payment");
-        else
-            throw new OrderNotDeliveredException("The order has not been delivered yet");
-    }
-
-    public void changeOrderState(String uid, OrderState orderState){
-        Cart cart = findCurrentCartByUid(uid);
-        if(orderState == OrderState.COMPLETED){
-            completeOrder(findPenultimateUserCart(uid));
-        } else if(orderState == OrderState.SENT){
-
-            List<ProductOrder> orders = findCurrentProductOrders(uid);
+            if(orders.isEmpty())
+                throw new DataNotFoundException("No products in cart");
 
             for (ProductOrder o : orders) {
                 Product p = o.getProduct();
@@ -83,12 +67,33 @@ public class CartService {
                 productService.saveOrUpdateProduct(p);
             }
 
-            cart.setShipDate(new Date());
             cart.setOrderState(orderState);
             cartRepository.save(cart);
 
             Cart newCart = new Cart();
-            newCart.setUid(uid);
+            newCart.setUid(cart.getUid());
+            newCart.setOrderState(OrderState.EMPTY);
+            cartRepository.save(newCart);
+        } else if(orderState == OrderState.SENT){
+            if(cart.getOrderState() != OrderState.PAID)
+                throw new PaymentException("Waiting for payment");
+
+            cart.setShipDate(new Date());
+            cart.setOrderState(orderState);
+            cartRepository.save(cart);
+        } else if(orderState == OrderState.COMPLETED){
+            if(cart.getOrderState() != OrderState.SENT)
+                throw new OrderNotSentException("Order has not been shipped yet");
+
+            cart.setOrderState(orderState);
+            cart.setDeliveryDate(new Date());
+            cartRepository.save(cart);
+        } else if(orderState == OrderState.CANCELLED) {
+            cart.setOrderState(orderState);
+            cartRepository.save(cart);
+
+            Cart newCart = new Cart();
+            newCart.setUid(cart.getUid());
             newCart.setOrderState(OrderState.EMPTY);
             cartRepository.save(newCart);
         } else {
@@ -97,10 +102,62 @@ public class CartService {
         }
     }
 
-    public Cart findPenultimateUserCart(String uid){
-        List<Cart> cart = cartRepository.findCartByUid(uid);
-        return cart.get(cart.size()-2);
+//    public void completeOrder(Cart cart){
+//        if(cart.getOrderState() == OrderState.SENT) {
+//            cart.setOrderState(OrderState.COMPLETED);
+//            cart.setDeliveryDate(new Date());
+//            cartRepository.save(cart);
+//
+//        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
+//            throw  new PaymentException("Waiting for payment");
+//        else
+//            throw new OrderNotSentException("The order has not been delivered yet");
+//    }
+//
+//    public void changeOrderState(String uid, OrderState orderState){
+//        Cart cart = findCurrentCartByUid(uid);
+//        if(orderState == OrderState.COMPLETED){
+//            completeOrder(findPenultimateUserCart(uid));
+//        } else if(orderState == OrderState.SENT){
+//
+//            Cart sentCart = findPenultimateUserCart(uid);
+//            sentCart.setShipDate(new Date());
+//            sentCart.setOrderState(orderState);
+//            cartRepository.save(sentCart);
+//
+//        } else if (orderState == OrderState.PAID) {
+//            List<ProductOrder> orders = findCurrentProductOrders(uid);
+//
+//            for (ProductOrder o : orders) {
+//                Product p = o.getProduct();
+//                System.out.println("cart : " + cart.getSummaryCost() + "  |  product : " + o.getSummaryPrice());
+//                cart.setSummaryCost(cart.getSummaryCost() + o.getSummaryPrice());
+//                p.setQuantity(p.getQuantity() - o.getQuantity());
+//                productService.saveOrUpdateProduct(p);
+//            }
+//
+//            cart.setOrderState(orderState);
+//            cartRepository.save(cart);
+//
+//            Cart newCart = new Cart();
+//            newCart.setUid(uid);
+//            newCart.setOrderState(OrderState.EMPTY);
+//            cartRepository.save(newCart);
+//        } else {
+//            cart.setOrderState(orderState);
+//            cartRepository.save(cart);
+//        }
+//    }
+
+    public List<ProductOrder> findCartProductOrders(Long id){
+        Cart cart = findCartById(id);
+        return productOrderRepository.findAllByCart(cart);
     }
+
+//    public Cart findPenultimateUserCart(String uid){
+//        List<Cart> cart = cartRepository.findCartByUid(uid);
+//        return cart.get(cart.size()-2);
+//    }
 
     public Cart findCurrentCartByUid(String uid){
         List<Cart> cart = cartRepository.findCartByUid(uid);

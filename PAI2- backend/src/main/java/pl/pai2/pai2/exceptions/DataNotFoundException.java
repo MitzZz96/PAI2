@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class ProductNotFoundException extends RuntimeException{
+public class DataNotFoundException extends RuntimeException{
 
-    public ProductNotFoundException(String message){
+    public DataNotFoundException(String message){
         super(message);
     }
 }

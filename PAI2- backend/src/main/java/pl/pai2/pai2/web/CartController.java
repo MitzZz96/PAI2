@@ -38,6 +38,11 @@ public class CartController {
         return new ResponseEntity<Cart>(cart1, HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCartById(@PathVariable Long id){
+        return new ResponseEntity<>(cartService.findCartById(id), HttpStatus.OK);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<?> getAllCarts(){
         return new ResponseEntity<>(cartService.findAll(), HttpStatus.OK);
@@ -62,9 +67,9 @@ public class CartController {
         return new ResponseEntity<>(cartService.findAllCartsByUid(uid), HttpStatus.OK);
     }
 
-    @GetMapping("/user/{uid}/change_state/{state}")
-    public ResponseEntity<?> changeOrderState(@PathVariable String uid, @PathVariable OrderState state){
-        cartService.changeOrderState(uid, state);
+    @GetMapping("/{id}/change_state/{state}")
+    public ResponseEntity<?> changeOrderState(@PathVariable Long id, @PathVariable OrderState state){
+        cartService.changeCartOrderState(id, state);
         return new ResponseEntity<>("Order state changed to " + state, HttpStatus.OK);
     }
 
