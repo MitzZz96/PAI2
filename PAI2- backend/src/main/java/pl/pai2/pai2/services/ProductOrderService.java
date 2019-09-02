@@ -51,8 +51,8 @@ public class ProductOrderService {
             cart.setSummaryCost(cart.getSummaryCost() - productOrder.get().getSummaryPrice());
             cartService.createOrUpdateCart(cart);
             productOrderRepository.delete(productOrder.get());
-            if(findAll().isEmpty())
-                cartService.changeCartOrderState(productOrder.get().getCart().getIdCart(), OrderState.EMPTY);
+            if(findByCart(cart).size() == 0)
+                cartService.changeCartOrderState(cart.getIdCart(), OrderState.EMPTY);
         } else
             throw new DataNotFoundException("ProductOrder with id '" + id + "' not found");
     }
