@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import fire from "../../Config/Fire";
+import Popup from "reactjs-popup";
 import _ from "lodash";
 import {
   getUserCart,
@@ -62,11 +63,14 @@ class ProductItem extends Component {
   }
 
   handleChange = e => {
-    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value,
       summaryPrice: e.target.value * this.props.product.price
     });
+  };
+
+  handleClick = () => {
+    window.alert("Dodano do koszyka");
   };
 
   handleSubmit = e => {
@@ -91,8 +95,8 @@ class ProductItem extends Component {
     const { product } = this.props;
     return (
       <React.Fragment>
-        <div className="col-2 col-md-6 col-lg-3 my-3">
-          <form onSubmit={this.handleSubmit}>
+        <div className="row">
+          <div className="col-6 col-md-3">
             <div className="card product">
               <div className="image-container p-5">
                 <img
@@ -110,7 +114,9 @@ class ProductItem extends Component {
 
                 <div className="description d-flex justify-content-between">
                   <h5 className="align-self-center mb-0">Dostępność:</h5>
-                  <h5 className="align-self-center mb-0">{product.quantity}</h5>
+                  <h5 className="align-self-center mb-0">
+                    {product.quantity === 0 ? "Brak" : product.quantity}
+                  </h5>
                 </div>
 
                 <div className="description d-flex justify-content-between">
@@ -120,7 +126,6 @@ class ProductItem extends Component {
                     min="1"
                     max="999"
                     step="1"
-                    // defaultValue={"1"}
                     name="quantity"
                     value={this.state.quantity}
                     className="description-input mt-1"
@@ -129,13 +134,33 @@ class ProductItem extends Component {
                 </div>
               </div>
 
-              <input
-                type="submit"
-                className="btn btn-info btn-block mt-4"
-                value="Dodaj do koszyka"
-              />
+              {product.quantity === 0 ? (
+                <Popup
+                  trigger={
+                    <button
+                      className="btn btn-info btn-block mr-0"
+                      value="Dodaj do koszyka"
+                    >
+                      Dodaj do koszyka
+                    </button>
+                  }
+                  modal
+                  closeOnDocumentClick
+                >
+                  <center>
+                    <h1 style={{ color: "red" }}>Produkt jest niedostępny </h1>
+                  </center>
+                </Popup>
+              ) : (
+                <form onSubmit={this.handleSubmit}>
+                  <input
+                    type="submit"
+                    className="btn btn-info btn-block mr-0"
+                  />
+                </form>
+              )}
             </div>
-          </form>
+          </div>
         </div>
       </React.Fragment>
     );

@@ -4,6 +4,7 @@ import Login from "../UserManagment/Login";
 import img1 from "../../images/icons/book-interface.png";
 import img2 from "../../images/icons/shopping-cart-interface.png";
 import img3 from "../../images/icons/log-off.png";
+import zdjecie1 from "../../images/Account/zdjecie1.png";
 import fire from "../../Config/Fire";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -52,12 +53,15 @@ class Account extends Component {
     };
 
     return (
-      <div className="container user">
-        <h1>Witaj {this.state.userLogged.firstName}</h1>
+      <div className="container-user">
+        <center>
+          <h1>Witamy na Twoim koncie {this.state.userLogged.firstName}</h1>
+        </center>
+        <hr />
         {this.state.userLogged.client ? (
-          <EmployeeAcc logFunc={logout} user={this.state.user} />
-        ) : (
           <UserAcc logFunc={logout} user={this.state.user} />
+        ) : (
+          <EmployeeAcc logFunc={logout} user={this.state.user} />
         )}
       </div>
     );
@@ -70,30 +74,52 @@ const UserAcc = props => {
     window.location.href = "/";
   };
   return (
-    <div className="row">
-      <div className="col-9 mx-auto col-lg-4 my-3">
-        <div className="card order">
-          <div className="card-body order">
-            <img src={img1} alt="Zamowienia" />
-            {`Twoje zamówienia`}
-          </div>
+    <div className="container">
+      <div className="col-9 mx-auto">
+        <div className="container-account">
+          <img src={zdjecie1} alt="account" />
         </div>
-      </div>
-      <div className="col-9 mx-auto col-lg-4 my-3">
-        <div className="card order">
-          <Link to={`/address`}>
-            <div className="card-body order">
-              <img src={img2} alt="Adresy" />
-              {`Twoje dane kontaktowe`}
+
+        <div className="row">
+          <div className="col-6 col-md-4 mt-5 mb-5">
+            <div className="card order">
+              <Link to={`/ordersClient`}>
+                <div className="card-body order">
+                  <img src={img1} alt="Zamowienia" />
+                  <br />
+                  <div className="card-title">{`Zamówienia`}</div>
+                  <p className="description">
+                    Sprawdź produkty znajdujujące się w Twoim zamówieniu.
+                  </p>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-      </div>
-      <div className="col-9 mx-auto col-lg-4 my-3">
-        <div className="card order">
-          <div className="card-body order" onClick={logout}>
-            <img src={img3} alt="Log off" />
-            {`Wyloguj`}
+          </div>
+          <div className="col-6 col-md-4 mt-5 mb-5">
+            <div className="card order">
+              <Link to={`/address`}>
+                <div className="card-body order">
+                  <img src={img2} alt="Adresy" />
+                  <br />
+                  <div className="card-title">{`Dane kontaktowe`}</div>
+                  <p className="description">
+                    Przejrzyj jakie posiadasz dane kontaktowe.
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <div className="col-6 col-md-4 mt-5 mb-5 ">
+            <div className="card order">
+              <div className="card-body order" onClick={logout}>
+                <img src={img3} alt="Log off" />
+                <br />
+                <div className="card-title">{`Wyloguj`}</div>
+                <p className="description">
+                  Wylogowując się chronisz dostęp do swojego konta.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,30 +133,52 @@ const EmployeeAcc = props => {
     window.location.href = "/";
   };
   return (
-    <div className="row">
-      <div className="col-9 mx-auto col-lg-4 my-3">
-        <div className="card order">
-          <div className="card-body order">
-            <img src={img1} alt="Zamowienia" />
-            {`Zamówienia`}
-          </div>
+    <div className="container">
+      <div className="col-9 mx-auto">
+        <div className="container-account">
+          <img src={zdjecie1} alt="account" />
         </div>
-      </div>
-      <div className="col-9 mx-auto col-lg-4 my-3">
-        <div className="card order">
-          <Link to={`/address`}>
-            <div className="card-body order">
-              <img src={img2} alt="Klienci" />
-              {`Aktywni klienci`}
+
+        <div className="row">
+          <div className="col-6 col-md-4 mt-5 mb-5">
+            <div className="card order">
+              <Link to={`/orders`}>
+                <div className="card-body order">
+                  <img src={img1} alt="Zamowienia" />
+                  <br />
+                  <div className="card-title">{`Zamówienia`}</div>
+                  <p className="description">
+                    Sprawdź aktualne zamówienia w sklepie.
+                  </p>
+                </div>
+              </Link>
             </div>
-          </Link>
-        </div>
-      </div>
-      <div className="col-9 mx-auto col-lg-4 my-3">
-        <div className="card order">
-          <div className="card-body order" onClick={logout}>
-            <img src={img3} alt="Log off" />
-            {`Wyloguj`}
+          </div>
+          <div className="col-6 col-md-4 mt-5 mb-5">
+            <div className="card order">
+              <Link to={`/address`}>
+                <div className="card-body order">
+                  <img src={img2} alt="Adresy" />
+                  <br />
+                  <div className="card-title">{`Dane kontaktowe`}</div>
+                  <p className="description">
+                    Przejrzyj dane kontaktowe naszych klientów.
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <div className="col-6 col-md-4 mt-5 mb-5 ">
+            <div className="card order">
+              <div className="card-body order" onClick={logout}>
+                <img src={img3} alt="Log off" />
+                <br />
+                <div className="card-title">{`Wyloguj`}</div>
+                <p className="description">
+                  Wylogowując się chronisz dostęp do swojego konta.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

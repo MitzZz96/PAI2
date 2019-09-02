@@ -4,15 +4,13 @@ body {
   font-size: 13px;
   line-height: 18px;
   background-color: #e6e6e6;
+  font-family: "Arial";
 }
 
 /* ---------------HEADER.js - Navbar-------------------------- */
 
 .container .navbar {
-  background-color: #fff8e1;
-  border-top: 20px solid #757575;
-  border-left: 2px solid #4b4a4a;
-  border-right: 2px solid #4b4a4a;
+  background-color: #fff;
 
   margin: 0 0;
 }
@@ -21,32 +19,24 @@ body {
   margin-left: 80px;
 }
 
-.container .navbar .icon_user {
-  margin-left: 350px;
-}
-
-.container .navbar .icon_basket {
-  margin-right: 30px;
-}
-
 .container .navbar .btn.btn-outline-success {
-  background-color: #757575;
-  border: 2px solid #4b4a4a;
+  background-color: #979696;
+  border: none;
   color: white;
-
   width: 170px;
   letter-spacing: 2px;
 }
 .container .navbar .btn.btn-outline-success:hover {
-  background-color: rgba(113, 124, 91, 0.959);
+  background-color: #757575;
+  font-weight: 600;
 }
 
 /*------------------------Header.js - menu------------------*/
 
 .container .menu {
-  background-color: #757575;
-  border-top: 2px solid #4b4a4a;
-  border-bottom: 2px solid #4b4a4a;
+  background-color: #979696;
+  border-top: 2px solid #757575;
+  border-bottom: 2px solid #757575;
 }
 
 .container .menu .nav a {
@@ -58,6 +48,7 @@ body {
 
 .container .menu .nav {
   font-size: 15px;
+  font-family: "Arial";
 }
 
 .container .menu .nav .nav-item {
@@ -67,27 +58,29 @@ body {
 }
 
 .container .menu .nav .nav-item:hover {
-  background-color: rgba(113, 124, 91, 0.959);
+  background-color: #757575;
+  font-weight: 600;
 }
 
 /*----------------------------MainPage.js ------------------------------*/
 .container .main {
-  background-color: #fff8e1;
+  background-color: #fff;
   padding-bottom: 60px;
-  border-left: 2px solid rgba(55, 56, 50, 0.959);
-  border-right: 2px solid rgba(55, 56, 50, 0.959);
 }
 .container .main .section_main .title {
-  color: rgba(55, 56, 50, 0.959);
+  color: #4e4e4e;
   text-align: center;
   padding-top: 20px;
   letter-spacing: 2px;
 }
 
 .container .main .section_main .figure_main .card.card.main-page {
-  background-color: #757575;
-
+  background-color: #979696;
   margin: 25px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .container
@@ -103,28 +96,21 @@ body {
 }
 
 .container .main .section_main .figure_main .card.main-page:hover {
-  background-color: rgba(113, 124, 91, 0.959);
+  background-color: #757575;
   text-decoration: none;
-  border-color: black;
-  border: 1px solid rgba(113, 124, 91, 0.958);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  font-weight: bold;
+  font-weight: 600;
+  border: 2px solid #646464;
 }
 
 /*-----------------------------FOOTER.js-------------------------------------*/
 
 .container .rectangle {
-  background-color: #757575;
-  border-left: 2px solid rgba(55, 56, 50, 0.959);
-  border-right: 2px solid rgba(55, 56, 50, 0.959);
-  border-top: 2px solid rgba(55, 56, 50, 0.959);
-  border-bottom: 2px solid rgba(55, 56, 50, 0.959);
+  background-color: #979696;
   padding-bottom: 20px;
   padding-top: 20px;
   margin: 0;
+  border-top: 2px solid #757575;
+  border-bottom: 2px solid #757575;
 }
 
 .container .rectangle .footer-copyright.mb-0 {
@@ -148,15 +134,13 @@ body {
 .container .main .search_engine .form-control {
   margin: 10px 15px;
   border: 1px solid grey;
-  width: 55%;
+  width: 222px;
 }
 .container .main .sort_button {
   border: 1px solid black;
   position: relative;
-  left: 220px;
-  top: -50px;
-  height: 50%;
-  width: 20%;
+  padding: 200px;
+  width: 200%;
   border: 1px solid grey;
   letter-spacing: 1px;
   padding: 0;
@@ -168,12 +152,15 @@ body {
   border-bottom-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-  background-color: rgb(80, 75, 75);
+  background-color: #979696;
   color: #fff;
+  box-shadow: 1px 1px 1px #757575;
 }
 
 .container .main .sort_button:hover {
-  background-color: rgba(113, 124, 91, 0.959);
+  background-color: #757575;
+  font-weight: 600;
+  box-shadow: 1px 1px 1px #757575;
 }
 
 /*.............................PRODUCTITEM.JS-----------------------------*/
@@ -184,21 +171,21 @@ body {
   background-color: #fff;
 }
 
-.btn.btn-outline-secondary {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.card.product .btn {
+  background-color: #979696;
   border: none;
-  width: 14rem;
-  margin-bottom: 0;
-  background-color: rgba(85, 84, 81, 0.959);
-  color: #fff;
+  color: white;
   letter-spacing: 2px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
-.btn.btn-outline-secondary:hover {
-  background-color: rgba(113, 124, 91, 0.958);
+.card.product .btn:hover {
+  background-color: #757575;
+  font-weight: 600;
+  box-shadow: 1px 1px 1px #757575;
 }
 
 .product {
@@ -214,7 +201,7 @@ img {
   border: 0;
 }
 
-.card-body .description p {
+.card-body .description {
   font-family: arial;
   font-weight: 400;
   font-size: 14px;
@@ -225,14 +212,10 @@ img {
   margin: 0;
 }
 
-.card-body .description {
-  color: #333;
-  letter-spacing: 1px;
-}
-
 .card-body .description-input {
   color: #333;
-  width: 50px;
+  width: 35px;
+  text-align: right;
 }
 
 a:hover {
@@ -242,28 +225,28 @@ a:hover {
 /*-----------------------------------LOGIN.js-------------------------------*/
 
 .login .container {
-  background-color: #fff8e1;
-
+  background-color: #fff;
   letter-spacing: 2px;
-  color: black;
-
+  color: #4e4e4e;
   padding-bottom: 120px;
-  border-left: 2px solid rgba(55, 56, 50, 0.959);
-  border-right: 2px solid rgba(55, 56, 50, 0.959);
   margin: 0;
 }
 
 .login .container .border-log {
   border: 2px solid #d6dfcb;
   padding-bottom: 20px;
-  background-color: rgb(241, 241, 241);
+  background-color: #e6e6e6;
   margin-top: 50px;
   box-shadow: 10px 5px 5px black;
   border: 2px solid black;
 }
 
-.login .container .border-log h1 {
-  box-shadow: 10px 5px 5px black;
+.login .container .border-log h3 {
+  padding-bottom: 5px;
+
+  border-bottom: 2px solid black;
+  background-color: #979696;
+  color: #fff;
 }
 
 .login .container .form-group {
@@ -275,7 +258,7 @@ a:hover {
 .login .container .form-group .form-control.form-control-lg {
   letter-spacing: 2px;
   border: 2px solid black;
-  box-shadow: 10px 5px 5px black;
+  box-shadow: 1px 1px 1px black;
 }
 
 .login .container .button_log {
@@ -284,27 +267,107 @@ a:hover {
 }
 
 .login .container .button_log .btn.btn-info.mx-auto.btn-lg.btn-block {
-  background-color: rgba(85, 84, 81, 0.959);
+  background-color: #979696;
   border: 2px solid black;
   letter-spacing: 2px;
-  box-shadow: 10px 5px 5px black;
+  box-shadow: 1px 1px 1px black;
 }
 
 .login .container .button_log .btn.btn-info.mx-auto.btn-lg.btn-block:hover {
-  background-color: rgba(113, 124, 91, 0.958);
+  background-color: #757575;
+  font-weight: 600;
+  box-shadow: 10px 5px 5px black;
 }
 
-/*-----------------------------REGISTRATION.HTML--------------------------*/
+/*-----------------------------REGISTRATION.js--------------------------*/
 
 .register .container .form-register {
-  background-color: #fff8e1;
+  background-color: #fff;
 }
 
-.register .container .form-register .form-container {
-  border: 2px solid black;
-  margin-top: 30px;
-  margin-right: 20px;
+.register .container .form-register .display-4 {
+  color: #4e4e4e;
+  letter-spacing: 2px;
 }
+
+.register .container .form-register .lead {
+  color: #4e4e4e;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.register .container .form-register .text-center {
+  margin-top: 30px;
+}
+
+.register .container .form-register .form-row .form-group {
+  letter-spacing: 2px;
+}
+
+.register .container .form-register .form-row .form-group .form-control:focus {
+  border: 1px solid #4e4e4e;
+  box-shadow: 1px 1px 1px #fff;
+}
+
+/*----------------------------ACCOUNT.js--------------------------------*/
+
+.container-user {
+  background-color: #fff;
+  padding-top: 20px;
+  text-align: center;
+  color: #4e4e4e;
+}
+
+.container-account {
+  padding-top: 20px;
+}
+
+.card.order .card-body.order {
+  background-color: #979696;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 18px;
+  border: 1px solid #979696;
+}
+
+.card.order .card-body.order .card-title {
+  color: #fff;
+  font-weight: 700;
+}
+
+.card.order .card-body.order .description {
+  padding-top: 5px;
+  color: #fff;
+}
+
+.card.order .card-body.order:hover {
+  background-color: #757575;
+  font-weight: 600;
+  border: 2px solid #646464;
+}
+
+/*----------------------------BASKET.JS---------------------------------*/
+
+.container .main .my-card .header-basket {
+  background-color: #fff;
+  padding-top: 20px;
+  text-align: center;
+  color: #4e4e4e;
+}
+
+.container .main .my-card .container .btn.btn-info {
+  background-color: #979696;
+  border: 1px solid #979696;
+  letter-spacing: 2px;
+  box-shadow: 1px 1px 1px #757575;
+}
+
+.container .main .my-card .container .btn.btn-info:hover {
+  background-color: #757575;
+  font-weight: 600;
+  box-shadow: 1px 1px 1px #fff;
+}
+
 /*----------------------------ADRIAN------------------------------------*/
 
 /*----------------------------PRODUCT------------------------------------*/

@@ -94,9 +94,13 @@ class Category extends Component {
                 />
               </div>
 
-              <button className="sort_button" onClick={this.handleClick}>
-                {this.state.search_type ? "Sortuj rosnąco" : "Sortuj malejąco"}
-              </button>
+              <div className="col-6 col-md-3 ml-5 ">
+                <button className="sort_button " onClick={this.handleClick}>
+                  {this.state.search_type
+                    ? "Sortuj rosnąco"
+                    : "Sortuj malejąco"}
+                </button>
+              </div>
             </div>
           </div>
           <div className="col-md-3" />

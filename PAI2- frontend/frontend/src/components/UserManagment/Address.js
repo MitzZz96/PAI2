@@ -10,21 +10,27 @@ export class Address extends Component {
   };
 
   componentDidMount() {
-    this.props.getAddress(1);
-    this.props.getContact(1);
-  }
-  componentWillReceiveProps(nextProps) {
-    const { address } = nextProps.address;
-    const { contact } = nextProps.address;
     this.setState({
-      address,
-      contact
+      address: this.props.address.userLogged.address,
+      contact: this.props.address.userLogged.contact
     });
+    // this.props.getAddress(1);
+    // this.props.getContact(1);
   }
+  // componentWillReceiveProps(nextProps) {
+  //   const { address } = nextProps.address;
+  //   const { contact } = nextProps.address;
+  //   this.setState({
+  //     address,
+  //     contact
+  //   });
+  // }
 
   render() {
     const { address } = this.state;
     const { contact } = this.state;
+    let indexAddress = 1;
+    let indexContact = 1;
     return (
       <div className="container">
         <div className="main">
@@ -46,7 +52,7 @@ export class Address extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">{address.idAddress}</th>
+                    <th scope="row">{indexAddress++}</th>
                     <td>{address.streetAddress}</td>
                     <td>{address.homeNumber}</td>
                     <td>{address.localNumber}</td>
@@ -68,19 +74,7 @@ export class Address extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">{contact.idContact}</th>
-                    <td>{contact.email}</td>
-                    <td>{contact.number1}</td>
-                    <td>{contact.number2 ? contact.number2 : "-"}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{contact.idContact}</th>
-                    <td>{contact.email}</td>
-                    <td>{contact.number1}</td>
-                    <td>{contact.number2 ? contact.number2 : "-"}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">{contact.idContact}</th>
+                    <th scope="row">{indexContact++}</th>
                     <td>{contact.email}</td>
                     <td>{contact.number1}</td>
                     <td>{contact.number2 ? contact.number2 : "-"}</td>
@@ -96,9 +90,9 @@ export class Address extends Component {
 }
 
 Address.propTypes = {
-  getAddress: PropTypes.func.isRequired,
-  address: PropTypes.object.isRequired,
-  getContact: PropTypes.func.isRequired
+  // getAddress: PropTypes.func.isRequired,
+  address: PropTypes.object.isRequired
+  // getContact: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -106,7 +100,4 @@ const mapStateToProps = state => ({
   contact: state.contact
 });
 
-export default connect(
-  mapStateToProps,
-  { getAddress, getContact }
-)(Address);
+export default connect(mapStateToProps)(Address);

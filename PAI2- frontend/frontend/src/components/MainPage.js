@@ -22,7 +22,7 @@ class MainPage extends Component {
               <div className="col-sm-6 col-md-4">
                 <figure className="figure_main">
                   <div className="card main-page">
-                    <Link to={`miesa`}>
+                    <Link to={`category/miesa`}>
                       <img src={mieso} alt="wedlina" />
                       <div className="card-body">
                         <h5 className="card-title">Świeże mięso</h5>
@@ -36,7 +36,7 @@ class MainPage extends Component {
               <div className="col-sm-6 col-md-4">
                 <figure className="figure_main">
                   <div className="card main-page">
-                    <Link to={`nabiał`}>
+                    <Link to={`category/nabial`}>
                       <img src={nabial} alt="nabial" />
                       <div className="card-body">
                         <h5 className="card-title">Nabiał</h5>
@@ -50,7 +50,7 @@ class MainPage extends Component {
               <div className="col-sm-6 col-md-4">
                 <figure className="figure_main">
                   <div className="card main-page">
-                    <Link to={`pieczywo`}>
+                    <Link to={`category/pieczywo`}>
                       <img src={pieczywo} alt="pieczywo" />
                       <div className="card-body">
                         <h5 className="card-title">Chrupiące pieczywo</h5>
@@ -64,7 +64,7 @@ class MainPage extends Component {
               <div className="col-sm-6 col-md-4">
                 <figure className="figure_main">
                   <div className="card main-page">
-                    <Link to={`owoce`}>
+                    <Link to={`category/owoce`}>
                       <img src={owoce} alt="owoce" />
                       <div className="card-body">
                         <h5 className="card-title">Soczyste owoce</h5>
@@ -78,7 +78,7 @@ class MainPage extends Component {
               <div className="col-sm-6 col-md-4">
                 <figure className="figure_main">
                   <div className="card main-page">
-                    <Link to={`slodycze`}>
+                    <Link to={`category/slodycze`}>
                       <img src={slodycze} alt="slodycze" />
                       <div className="card-body">
                         <h5 className="card-title">Slodziutkie słodycze</h5>
@@ -92,7 +92,7 @@ class MainPage extends Component {
               <div className="col-sm-6 col-md-4">
                 <figure className="figure_main">
                   <div className="card main-page">
-                    <Link to={`napoje`}>
+                    <Link to={`category/napoje`}>
                       <img src={napoje} alt="napoje" />
                       <div className="card-body">
                         <h5 className="card-title">Napoje</h5>

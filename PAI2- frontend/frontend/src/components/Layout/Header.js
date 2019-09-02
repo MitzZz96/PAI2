@@ -28,17 +28,15 @@ class Header extends Component {
               <img src={logo} alt="Logo sklepu" />
             </Link>
           </div>
-          <div className="icon_user">
+          <div className="icon_user float-sm-right ">
             <Link to={`/acc`}>
-              <div className="btn btn-outline-success">
+              <div className="btn btn-outline-success mr-4" >
                 <img src={acc} alt="Account" className="img-icon-user" />
                 Twoje konto
               </div>
             </Link>
-          </div>
-          <div className="icon_basket">
             <Link to="/basket">
-              <div className="btn btn-outline-success">
+              <div className="btn btn-outline-success ml-4">
                 <img
                   src={order}
                   alt="Shopping cart"
@@ -48,6 +46,9 @@ class Header extends Component {
               </div>
             </Link>
           </div>
+         
+            
+         
         </nav>
 
         <div className="menu">

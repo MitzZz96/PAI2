@@ -52,7 +52,7 @@ export class Login extends Component {
   moveWin = () => {
     setTimeout(function() {
       window.location.href = "/register";
-    }, 2000);
+    }, 1500);
   };
 
   text = () => {
@@ -71,8 +71,8 @@ export class Login extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-6 m-auto">
-              <div className="border-log">
-                <h1 className="display-4 text-center">Logowanie</h1>
+              <div className="border-log mx-auto">
+                <h3 className="display-4 text-center">Logowanie</h3>
                 <form onSubmit={this.login}>
                   <div className="form-group">
                     <input

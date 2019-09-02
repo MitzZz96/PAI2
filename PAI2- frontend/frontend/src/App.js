@@ -18,6 +18,9 @@ import Basket from "./components/Basket/Basket";
 import Address from "./components/UserManagment/Address";
 import Clients from "./components/UserManagment/Clients";
 import Orders from "./components/UserManagment/Orders";
+import UserMap from "./components/UserManagment/UserMap";
+import OrdersClient from "./components/UserManagment/OrdersClient";
+import OrderDetails from "./components/UserManagment/OrderDetails";
 
 class App extends Component {
   state = {
@@ -76,8 +79,24 @@ class App extends Component {
                 render={props => <Basket user={this.state} {...props} />}
               />
               <Route exact path="/address" component={Address} />
+              <Route exact path="/checkout" />
               <Route exact path="/clients" component={Clients} />
-              <Route exact path="/orders" component={Orders} />
+              <Route
+                exact
+                path="/orders"
+                render={props => <Orders user={this.state} {...props} />}
+              />
+              <Route
+                exact
+                path="/ordersClient"
+                render={props => <OrdersClient user={this.state} {...props} />}
+              />
+              <Route
+                exact
+                path="/orderDetails/:id"
+                render={props => <OrderDetails user={this.state} {...props} />}
+              />
+              <Route exact path="/map/:id" component={UserMap} />
               <Route
                 exact
                 path="/category"
