@@ -55,10 +55,6 @@ export class Login extends Component {
     }, 1500);
   };
 
-  text = () => {
-    console.log("twoja stara");
-  };
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value

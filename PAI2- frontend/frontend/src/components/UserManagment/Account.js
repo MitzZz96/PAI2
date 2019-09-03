@@ -156,7 +156,7 @@ const EmployeeAcc = props => {
           </div>
           <div className="col-6 col-md-4 mt-5 mb-5">
             <div className="card order">
-              <Link to={`/address`}>
+              <Link to={`/addresses`}>
                 <div className="card-body order">
                   <img src={img2} alt="Adresy" />
                   <br />

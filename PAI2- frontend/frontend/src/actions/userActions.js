@@ -79,6 +79,16 @@ export const getUserCart = uID => async dispatch => {
   } catch (error) {}
 };
 
+export const getUserCartById = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/cart/${id}`);
+    dispatch({
+      type: GET_CART,
+      payload: res.data
+    });
+  } catch (error) {}
+};
+
 export const getUserCarts = uID => async dispatch => {
   try {
     const res = await axios.get(`/api/cart/user/${uID}/all`);

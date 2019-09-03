@@ -11,7 +11,6 @@ body {
 
 .container .navbar {
   background-color: #fff;
-
   margin: 0 0;
 }
 
@@ -81,6 +80,7 @@ body {
   border-top-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border: none;
 }
 
 .container
@@ -99,7 +99,7 @@ body {
   background-color: #757575;
   text-decoration: none;
   font-weight: 600;
-  border: 2px solid #646464;
+  font-size: 24px;
 }
 
 /*-----------------------------FOOTER.js-------------------------------------*/
@@ -124,43 +124,24 @@ body {
 
 .container .main .product_detarman h1 {
   color: rgb(80, 75, 75);
-  padding-top: 15px;
+  padding-top: 20px;
 }
 
-.container .main {
-  margin: 0px 0px;
+.container .main .table.table-borderless .form-control {
+  border: 1px solid grey;
+  width: 223px;
 }
 
-.container .main .search_engine .form-control {
-  margin: 10px 15px;
-  border: 1px solid grey;
-  width: 222px;
-}
-.container .main .sort_button {
-  border: 1px solid black;
-  position: relative;
-  padding: 200px;
-  width: 200%;
-  border: 1px solid grey;
-  letter-spacing: 1px;
-  padding: 0;
-  border-left: none;
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+.container .main .table.table-borderless .btn.btn-primary.btn-sm {
   background-color: #979696;
-  color: #fff;
-  box-shadow: 1px 1px 1px #757575;
+  border: none;
+  height: 30px;
+  letter-spacing: 2px;
 }
 
-.container .main .sort_button:hover {
+.container .main .table.table-borderless .btn.btn-primary.btn-sm:hover {
   background-color: #757575;
   font-weight: 600;
-  box-shadow: 1px 1px 1px #757575;
 }
 
 /*.............................PRODUCTITEM.JS-----------------------------*/
@@ -171,21 +152,22 @@ body {
   background-color: #fff;
 }
 
-.card.product .btn {
+.card.product .upload.btn.btn-info {
   background-color: #979696;
-  border: none;
   color: white;
   letter-spacing: 2px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border: none;
+  width: 223px;
+  height: 37px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.card.product .btn:hover {
+.card.product .upload.btn.btn-info:hover {
   background-color: #757575;
   font-weight: 600;
-  box-shadow: 1px 1px 1px #757575;
 }
 
 .product {
@@ -281,32 +263,44 @@ a:hover {
 
 /*-----------------------------REGISTRATION.js--------------------------*/
 
-.register .container .form-register {
+.container .register {
   background-color: #fff;
+  padding: 20px;
 }
 
-.register .container .form-register .display-4 {
+.container .register .reg {
+  margin-top: 10px;
+  letter-spacing: 2px;
   color: #4e4e4e;
-  letter-spacing: 2px;
 }
 
-.register .container .form-register .lead {
+.container .register .lead {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
   color: #4e4e4e;
-  margin-bottom: 40px;
+}
+
+.container .register .form-row .form-group {
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.container .register .form-row .form-group .form-control {
+  letter-spacing: 2px;
+  border: 1px solid black;
+  font-size: 12px;
+}
+
+.container .register .button-register.btn.btn-info {
+  background-color: #979696;
+  border: none;
   letter-spacing: 2px;
 }
 
-.register .container .form-register .text-center {
-  margin-top: 30px;
-}
-
-.register .container .form-register .form-row .form-group {
-  letter-spacing: 2px;
-}
-
-.register .container .form-register .form-row .form-group .form-control:focus {
-  border: 1px solid #4e4e4e;
-  box-shadow: 1px 1px 1px #fff;
+.container .register .button-register.btn.btn-info:hover {
+  background-color: #757575;
+  font-weight: 600;
 }
 
 /*----------------------------ACCOUNT.js--------------------------------*/
@@ -328,6 +322,7 @@ a:hover {
   letter-spacing: 2px;
   font-size: 18px;
   border: 1px solid #979696;
+  height: 201px;
 }
 
 .card.order .card-body.order .card-title {
@@ -357,21 +352,70 @@ a:hover {
 
 .container .main .my-card .container .btn.btn-info {
   background-color: #979696;
-  border: 1px solid #979696;
+  border: none;
   letter-spacing: 2px;
-  box-shadow: 1px 1px 1px #757575;
 }
 
 .container .main .my-card .container .btn.btn-info:hover {
   background-color: #757575;
   font-weight: 600;
-  box-shadow: 1px 1px 1px #fff;
+}
+
+/*----------------------------OrdersClient.JS---------------------------------*/
+.container .main {
+}
+.container .main .order {
+  margin-top: 20px;
+  color: #4e4e4e;
+}
+.button-order-details.btn.btn-info {
+  background-color: #bcbdbc;
+  border: none;
+  letter-spacing: 2px;
+}
+
+.button-order-details:hover.btn.btn-info:hover {
+  background-color: #aaacaa;
+}
+
+.button-map.btn.btn-info {
+  background-color: #bcbdbc;
+  border: none;
+  letter-spacing: 2px;
+}
+
+.button-map:hover.btn.btn-info:hover {
+  background-color: #aaacaa;
+}
+/*----------------------------USERMAP.JS---------------------------------*/
+
+.container .main .map-header {
+  padding-top: 20px;
+  color: #4e4e4e;
+  letter-spacing: 2px;
+}
+
+.container .main .button-order.btn.btn-info {
+  background-color: #979696;
+  border: none;
+  letter-spacing: 2px;
+}
+
+.container .main .button-order.btn.btn-info:hover {
+  background-color: #757575;
+  font-weight: 600;
+}
+
+/*----------------------------ADDRESS.JS--------------------------------*/
+
+.container .main .contact {
+  padding-top: 20px;
+  color: #4e4e4e;
+  letter-spacing: 2px;
 }
 
 /*----------------------------ADRIAN------------------------------------*/
-
 /*----------------------------PRODUCT------------------------------------*/
-
 .card-body.order:hover {
   color: black;
   background-color: #ff7e21;

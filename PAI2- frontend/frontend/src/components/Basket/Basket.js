@@ -66,26 +66,26 @@ class Basket extends Component {
 
   handleToken = async token => {
     // console.log(token);
-    const [product] = useState({
-      price: this.state.cart.summaryCost
-    });
+
     const response = await axios.post("http://localhost:3030/checkout", {
-      token,
-      product
+      token
     });
     const { status } = response.data;
 
     console.log("Response:", response.data);
     if (status === "success") {
       window.alert("Sukces! Sprawdź email po więcej informacji");
-      // this.handleSend();
+      this.props.changeOrderState(this.state.cart.idCart, "PAID");
+      this.reloadWin();
     } else {
       window.alert("Coś poszło nie tak", { type: "error" });
     }
   };
 
-  handleSend = () => {
-    this.props.changeOrderState(this.state.cart.idCart, "SENT");
+  reloadWin = () => {
+    setTimeout(function() {
+      window.location.reload(true);
+    }, 1000);
   };
 
   render() {
@@ -104,43 +104,50 @@ class Basket extends Component {
 
                 <div className="container">
                   {basketItems.length === 0 ? (
-                    <h1 style={{ textAlign: "center", color: "red" }}>
+                    <h1
+                      className="mb-5"
+                      style={{ textAlign: "center", color: "red" }}
+                    >
                       Brak produktów w koszyku
                     </h1>
                   ) : (
                     basketItems
                   )}
                   <hr />
-                  <div className="col-3 ">
-                    <h2 className="row float-sm-right">
-                      Suma całkowita: {this.state.cart.summaryCost}
-                    </h2>
-                  </div>
+                  <div className="row">
+                    <div className="col-sm-12 col-md-5 ">
+                      <h2 className=" float-sm-left">
+                        Suma całkowita: {this.state.cart.summaryCost} zł
+                      </h2>
+                    </div>
 
-                  {basketItems.length === 0 ? (
-                    <button
-                      className="btn btn-info float-sm-right"
-                      onClick={() => {
-                        window.alert("Brak produktów w koszyku");
-                      }}
-                    >
-                      Zamów i zapłać
-                    </button>
-                  ) : (
-                    <StripeCheckout
-                      stripeKey="pk_test_8VCpBN8J5r2s5vGeV0mihHZA00EZ5unMxL"
-                      token={this.handleToken}
-                      amount={this.state.summaryCost * 100}
-                      name={`Płatność do zamówienia`}
-                      panelLabel="Zapłać"
-                      currency="PLN"
-                      allowRememberMe={false}
-                    >
-                      <button className="btn btn-info float-sm-right ">
-                        Zamów i zapłać
-                      </button>
-                    </StripeCheckout>
-                  )}
+                    <div className="col-sm-12 col-md-7">
+                      {basketItems.length === 0 ? (
+                        <button
+                          className="btn btn-info shadow-none float-sm-right"
+                          onClick={() => {
+                            window.alert("Brak produktów w koszyku");
+                          }}
+                        >
+                          Zamów i zapłać
+                        </button>
+                      ) : (
+                        <StripeCheckout
+                          stripeKey="pk_test_8VCpBN8J5r2s5vGeV0mihHZA00EZ5unMxL"
+                          token={this.handleToken}
+                          amount={this.state.summaryCost * 100}
+                          name={`Płatność do zamówienia`}
+                          panelLabel="Zapłać"
+                          currency="PLN"
+                          allowRememberMe={false}
+                        >
+                          <button className="btn btn-info float-sm-right ">
+                            Zamów i zapłać
+                          </button>
+                        </StripeCheckout>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

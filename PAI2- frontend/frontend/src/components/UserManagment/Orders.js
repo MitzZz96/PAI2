@@ -232,46 +232,6 @@ export class Orders extends Component {
   }
 }
 
-const OrderItem = props => {
-  const { cart } = props;
-  return (
-    <tr>
-      <th scope="row">{props.index}</th>
-      <td>{cart.shipDate === null ? "-" : cart.shipDate}</td>
-      <td>{cart.deliveryDate === null ? "-" : cart.deliveryDate}</td>
-      <td>
-        {cart.orderState === "SENT"
-          ? "Wysłano"
-          : cart.orderState === "EMPTY"
-          ? "Koszyk jest pusty"
-          : cart.orderState === "PENDING"
-          ? "Oczekujące zamówienie"
-          : cart.orderState === "AWAITING_PAYMENT"
-          ? "Oczekująca zapłata"
-          : cart.orderState === "PAID"
-          ? "Zapłacone"
-          : cart.orderState === "COMPLETED"
-          ? "Zakończone"
-          : cart.orderState === "CANCELLED"
-          ? "Zmaówienie anulowane"
-          : null}
-      </td>
-      <td>{cart.summaryCost} zł</td>
-      <td>
-        <Link to={`/orderDetails/${cart.idCart}`}>
-          <button>Szczegóły</button>
-        </Link>
-      </td>
-
-      <td>
-        <Link to={`/map/${cart.uid}`}>
-          <button>Mapa</button>
-        </Link>
-      </td>
-    </tr>
-  );
-};
-
 Orders.propTypes = {
   getAddress: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired,

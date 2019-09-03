@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import {
   getUserCartProducts,
   getUser,
-  getUserCart
+  getUserCart,
+  getUserCartById
 } from "../../actions/userActions";
 import fire from "../../Config/Fire";
 
@@ -22,23 +23,27 @@ class OrderDetails extends Component {
         uid: userLog.uid,
         cartProductsOrders: this.props.address.cartProductsOrders
       });
-      this.props.getUserCartProducts(this.props.address.userLogged.uid);
+      // this.props.getUserCartProducts(this.props.address.userLogged.uid);
     }
   }
 
   componentDidUpdate(prevProps) {
     if (this.state.uid !== prevProps.address.userLogged.uid) {
       this.props.getUser(this.state.uid);
-      this.props.getUserCart(this.state.uid);
-      this.props.getUserCartProducts(this.state.uid);
+      this.props.getUserCartById(this.props.match.params.id);
+      this.props.getUserCartProducts(this.props.match.params.id);
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const { user } = nextProps.user;
+    const { userLogged } = nextProps.address;
     var userLog = fire.auth().currentUser;
     if (userLog) {
       this.setState({
-        uid: userLog.uid
+        uid: userLog.uid,
+        user,
+        userLogged
       });
     }
   }
@@ -60,6 +65,7 @@ OrderDetails.propTypes = {
   getUserCartProducts: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
   getUserCart: PropTypes.func.isRequired,
+  getUserCartById: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired
 };
 
@@ -72,6 +78,7 @@ export default connect(
   {
     getUserCartProducts,
     getUserCart,
-    getUser
+    getUser,
+    getUserCartById
   }
 )(OrderDetails);

@@ -17,15 +17,15 @@ class BasketItem extends Component {
         <br />
         <div className="card card-body">
           <div className="row table-secondary">
-            <div className="col-7">
+            <div className="col-sm-2 col-md-7">
               <h3 className="mt-2 ml-3">Produkt</h3>
             </div>
 
-            <div className="col-3">
+            <div className="col-sm-2 col-md-3">
               <h3 className="mr-4 mt-2">Cena detaliczna</h3>
             </div>
 
-            <div className="col-2">
+            <div className="col-sm-2 col-md-2">
               <h3 className="ml-5 mt-2">Ilość</h3>
             </div>
           </div>
@@ -56,17 +56,22 @@ class BasketItem extends Component {
           </div>
 
           <div className="row table-secondary">
-            <div className="col-2">
-              <button
-                className="btn btn-info btn-block mr-0"
-                onClick={this.handleClick}
-              >
-                Usuń produkt
-              </button>
+            <div className="delete-product col-7 d-inline-flex p-2 ml-0">
+              <div className="col-3 float-sm-left ">
+                <button
+                  className="btn btn-info btn-sm btn-block shadow-none "
+                  onClick={this.handleClick}
+                >
+                  Usuń produkt
+                </button>
+              </div>
             </div>
-
-            <div className="col-2">
-              <h4 className="mt-2 ml-4 ">Suma: {product.summaryPrice} zł</h4>
+            <div className="sum-product col-5 d-inline-flex p-3 ">
+              <div className="col-12  ">
+                <h4 className="float-sm-right">
+                  Suma: {product.summaryPrice} zł
+                </h4>
+              </div>
             </div>
           </div>
         </div>

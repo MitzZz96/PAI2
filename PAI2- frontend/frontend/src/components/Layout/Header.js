@@ -30,13 +30,13 @@ class Header extends Component {
           </div>
           <div className="icon_user float-sm-right ">
             <Link to={`/acc`}>
-              <div className="btn btn-outline-success mr-4" >
+              <div className="btn btn-outline-success mr-4 col-sm-6 col-md-6">
                 <img src={acc} alt="Account" className="img-icon-user" />
                 Twoje konto
               </div>
             </Link>
             <Link to="/basket">
-              <div className="btn btn-outline-success ml-4">
+              <div className="btn btn-outline-success ml-4 col-sm-6 col-md-6">
                 <img
                   src={order}
                   alt="Shopping cart"
@@ -46,9 +46,6 @@ class Header extends Component {
               </div>
             </Link>
           </div>
-         
-            
-         
         </nav>
 
         <div className="menu">

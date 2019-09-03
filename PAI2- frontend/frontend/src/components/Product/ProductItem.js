@@ -69,10 +69,6 @@ class ProductItem extends Component {
     });
   };
 
-  handleClick = () => {
-    window.alert("Dodano do koszyka");
-  };
-
   handleSubmit = e => {
     e.preventDefault();
 
@@ -87,6 +83,7 @@ class ProductItem extends Component {
       }
     };
     this.props.addNewProductOrder(newProductOrder);
+    window.alert("Dodano do koszyka");
     console.log(newProductOrder);
   };
 
@@ -137,12 +134,10 @@ class ProductItem extends Component {
               {product.quantity === 0 ? (
                 <Popup
                   trigger={
-                    <button
-                      className="btn btn-info btn-block mr-0"
-                      value="Dodaj do koszyka"
-                    >
-                      Dodaj do koszyka
-                    </button>
+                    <input
+                      type="submit"
+                      className="upload btn btn-info btn-block shadow-none"
+                    />
                   }
                   modal
                   closeOnDocumentClick
@@ -155,7 +150,7 @@ class ProductItem extends Component {
                 <form onSubmit={this.handleSubmit}>
                   <input
                     type="submit"
-                    className="btn btn-info btn-block mr-0"
+                    className="upload btn btn-info btn-block shadow-none"
                   />
                 </form>
               )}
