@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import img from "../../images/test.jpg";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import fire from "../../Config/Fire";
 import Popup from "reactjs-popup";
-import _ from "lodash";
 import {
   getUserCart,
   getUser,
@@ -47,7 +45,6 @@ class ProductItem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // const { user } = nextProps.user;
     const { userLogged } = nextProps.address;
     var userLog = fire.auth().currentUser;
     if (userLog) {
@@ -55,7 +52,7 @@ class ProductItem extends Component {
         cart: {
           uid: userLog.uid
         },
-        // user,
+
         userLogged,
         idCart: this.props.address.cart.idCart
       });
@@ -88,7 +85,6 @@ class ProductItem extends Component {
   };
 
   render() {
-    // const { id } = this.props.match.params;
     const { product } = this.props;
     return (
       <React.Fragment>

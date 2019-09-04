@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import classnames from "classnames";
 import fire from "../../Config/Fire";
-import { Link } from "react-router-dom";
-import { GET_ERRORS } from "../../actions/types";
 
 export class Login extends Component {
   state = {
     email: "",
     password: "",
-    user: {}
+    user: {},
+    err: false
   };
 
   componentDidMount() {
@@ -44,20 +43,17 @@ export class Login extends Component {
     fire
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {
-        console.log(u);
-      })
+      .then(this.moveWin)
       .catch(err => {
         console.log(err);
         window.alert(`${err}`);
       });
-    this.moveWin();
   };
 
   moveWin = () => {
     setTimeout(function() {
       window.location.href = "/register";
-    }, 1500);
+    }, 1000);
   };
 
   handleChange = e => {

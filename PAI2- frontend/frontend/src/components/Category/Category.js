@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { getProductsFromCategory } from "../../actions/productActions";
 import { getAllCategories } from "../../actions/categoryActions";
 import { connect } from "react-redux";

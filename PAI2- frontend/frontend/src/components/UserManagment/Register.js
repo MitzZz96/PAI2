@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import fire from "../../Config/Fire";
 import _ from "lodash";
 import { addNewUser } from "../../actions/userActions";
@@ -11,7 +10,7 @@ export class Register extends Component {
     uid: "",
     firstName: "",
     lastName: "",
-    client: true,
+    client: false,
     address: {
       city: "",
       homeNumber: null,
@@ -247,38 +246,6 @@ export class Register extends Component {
                     />
                   </div>
                 </div>
-                {/*
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      //     "is-invalid": errors.username
-                    })}
-                    placeholder="Adres Email (Username)"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                  {/*{errors.username && (
-                    <div className="invalid-feedback">{errors.username}</div>
-                  )}*
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className={classnames("form-control form-control-lg", {
-                      //  "is-invalid": errors.password
-                    })}
-                    placeholder="Hasło"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  {/* {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                 )}
-                </div>
-                */}
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>

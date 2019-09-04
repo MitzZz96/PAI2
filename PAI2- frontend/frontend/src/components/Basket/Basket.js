@@ -1,13 +1,9 @@
-import React, { Component, useState } from "react";
-import logo from "../../images/Header/logo.png";
+import React, { Component } from "react";
 import BasketItem from "./BasketItem";
 import PropTypes from "prop-types";
-import Popup from "reactjs-popup";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import axios from "axios";
 import fire from "../../Config/Fire";
-import _ from "lodash";
 import {
   getUserCart,
   getUser,

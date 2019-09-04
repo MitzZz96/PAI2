@@ -9,7 +9,6 @@ import Footer from "./components/Layout/Footer";
 import Category from "./components/Category/Category";
 import { Provider } from "react-redux";
 import store from "./store";
-import ProductDetails from "./components/Product/ProductDetails";
 import Register from "./components/UserManagment/Register";
 import Login from "./components/UserManagment/Login";
 import Acc from "./components/UserManagment/Acc";
@@ -21,7 +20,6 @@ import Orders from "./components/UserManagment/Orders";
 import UserMap from "./components/UserManagment/UserMap";
 import OrdersClient from "./components/UserManagment/OrdersClient";
 import OrderDetails from "./components/UserManagment/OrderDetails";
-import Orders_test from "./components/UserManagment/Orders";
 import Addresses from "./components/UserManagment/Addresses";
 
 class App extends Component {
@@ -111,10 +109,6 @@ class App extends Component {
                 render={props => (
                   <Category links={links} user={this.state} {...props} />
                 )}
-              />
-              <Route
-                path="/category/category_name/product_name"
-                component={ProductDetails}
               />
             </Switch>
             <Footer />

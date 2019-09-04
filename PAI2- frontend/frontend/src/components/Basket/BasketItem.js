@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import img from "../../images/test.jpg";
 import { deleteProductOrder } from "../../actions/userActions";
 import PropTypes from "prop-types";
-import Popup from "reactjs-popup";
 import { connect } from "react-redux";
-import classnames from "classnames";
 
 class BasketItem extends Component {
   handleClick = () => {

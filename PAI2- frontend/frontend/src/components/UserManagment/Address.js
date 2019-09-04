@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getAddress, getContact } from "../../actions/userActions";
 
 export class Address extends Component {
   state = {
@@ -14,17 +13,7 @@ export class Address extends Component {
       address: this.props.address.userLogged.address,
       contact: this.props.address.userLogged.contact
     });
-    // this.props.getAddress(1);
-    // this.props.getContact(1);
   }
-  // componentWillReceiveProps(nextProps) {
-  //   const { address } = nextProps.address;
-  //   const { contact } = nextProps.address;
-  //   this.setState({
-  //     address,
-  //     contact
-  //   });
-  // }
 
   render() {
     const { address } = this.state;
@@ -90,9 +79,7 @@ export class Address extends Component {
 }
 
 Address.propTypes = {
-  // getAddress: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired
-  // getContact: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

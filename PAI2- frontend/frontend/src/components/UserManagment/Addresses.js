@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getAddress, getContact, getAllUsers } from "../../actions/userActions";
+import { getAllUsers } from "../../actions/userActions";
 
 class Addresses extends Component {
   state = {
@@ -10,24 +10,10 @@ class Addresses extends Component {
   };
 
   componentDidMount() {
-    //   this.setState({
-    //     address: this.props.address.userLogged.address,
-    //     contact: this.props.address.userLogged.contact
-    //   });
     this.props.getAllUsers();
   }
-  //   componentWillReceiveProps(nextProps) {
-  //     const { address } = nextProps.address;
-  //     const { contact } = nextProps.address;
-  //     this.setState({
-  //       address,
-  //       contact
-  //     });
-  //   }
 
   render() {
-    const { address } = this.state;
-    const { contact } = this.state;
     let indexAddress = 1;
     let indexContact = 1;
 
@@ -105,9 +91,7 @@ class Addresses extends Component {
 }
 
 Addresses.propTypes = {
-  // getAddress: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired,
-  // getContact: PropTypes.func.isRequired,
   getAllUsers: PropTypes.func.isRequired
 };
 
