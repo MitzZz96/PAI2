@@ -62,7 +62,6 @@ public class CartService {
             for (ProductOrder o : orders) {
                 Product p = o.getProduct();
                 System.out.println("cart : " + cart.getSummaryCost() + "  |  product : " + o.getSummaryPrice());
-                cart.setSummaryCost(cart.getSummaryCost() + o.getSummaryPrice());
                 p.setQuantity(p.getQuantity() - o.getQuantity());
                 productService.saveOrUpdateProduct(p);
             }
