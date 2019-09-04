@@ -65,10 +65,11 @@ class Basket extends Component {
   }
 
   handleToken = async token => {
-    // console.log(token);
+    const amount = this.state.cart.summaryCost;
 
     const response = await axios.post("http://localhost:3030/checkout", {
-      token
+      token,
+      amount
     });
     const { status } = response.data;
 
@@ -135,7 +136,7 @@ class Basket extends Component {
                         <StripeCheckout
                           stripeKey="pk_test_8VCpBN8J5r2s5vGeV0mihHZA00EZ5unMxL"
                           token={this.handleToken}
-                          amount={this.state.summaryCost * 100}
+                          amount={this.state.cart.summaryCost * 100}
                           name={`Płatność do zamówienia`}
                           panelLabel="Zapłać"
                           currency="PLN"

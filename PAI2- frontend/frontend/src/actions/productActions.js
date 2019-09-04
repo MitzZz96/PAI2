@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS, GET_PRODUCT, GET_PRODUCTS, GET_CATEGORY } from "./types";
+import { GET_ERRORS, GET_PRODUCT, GET_PRODUCTS } from "./types";
 
 export const createProduct = (
   product,

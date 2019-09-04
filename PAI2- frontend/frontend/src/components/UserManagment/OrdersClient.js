@@ -19,8 +19,7 @@ class OrdersClient extends Component {
     user: {},
     status: null,
     uid: "",
-    date: "",
-    statuses: []
+    date: ""
   };
 
   componentDidMount() {
@@ -43,33 +42,8 @@ class OrdersClient extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.address.cart.orderState === "SENT") {
-      return this.setState(state => {
-        const statuses = [...state.statuses, state.value];
-        return { statuses, value: "Wysłano" };
-      }, console.log(this.state.statuses));
-    } else if (nextProps.address.cart.orderState === "EMPTY") {
-      // return this.setState({ statuses: "Pusty koszyk" });
-    } else if (nextProps.address.cart.orderState === "PENDING") {
-      // return this.setState({ statuses: "Oczekujące" });
-    } else if (nextProps.address.cart.orderState === "AWAITING_PAYMENT") {
-      // return this.setState({ statuses: "Oczekuje płatności" });
-    } else if (nextProps.address.cart.orderState === "COMPLETED") {
-      // return this.setState({ statuses: "Zakończone" });
-    }
-    if (nextProps.address.cart.deliveryDate === null)
-      return this.setState({ date: null });
-    this.setState({
-      carts: nextProps.address.userCarts
-    });
-    this.props.getUserCarts(this.props.address.userLogged.uid);
-  }
-
   render() {
-    // const { cart } = this.props.address;
     let index = 1;
-    console.log(this.state.carts);
 
     let orders = this.props.address.userCarts.map((cart, status) => {
       return (

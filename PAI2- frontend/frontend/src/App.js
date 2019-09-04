@@ -21,7 +21,7 @@ import Orders from "./components/UserManagment/Orders";
 import UserMap from "./components/UserManagment/UserMap";
 import OrdersClient from "./components/UserManagment/OrdersClient";
 import OrderDetails from "./components/UserManagment/OrderDetails";
-import Orders_test from "./components/UserManagment/Orders_test";
+import Orders_test from "./components/UserManagment/Orders";
 import Addresses from "./components/UserManagment/Addresses";
 
 class App extends Component {
@@ -87,7 +87,7 @@ class App extends Component {
               <Route
                 exact
                 path="/orders"
-                render={props => <Orders_test user={this.state} {...props} />}
+                render={props => <Orders user={this.state} {...props} />}
               />
               <Route
                 exact

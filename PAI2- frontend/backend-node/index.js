@@ -20,7 +20,7 @@ app.post("/checkout", async (req, res) => {
   let error;
   let status;
   try {
-    const { product, token } = req.body;
+    const { amount, token } = req.body;
 
     const customer = await stripe.customers.create({
       email: token.email,
@@ -30,7 +30,7 @@ app.post("/checkout", async (req, res) => {
     const idempotency_key = uuid();
     const charge = await stripe.charges.create(
       {
-        amount: 100,
+        amount: 100 * amount,
         currency: "PLN",
         customer: customer.id,
         receipt_email: token.email,

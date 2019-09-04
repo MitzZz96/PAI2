@@ -36,11 +36,15 @@ class UserMap extends Component {
           <hr />
           {this.props.address.userLogged.isClient === false ? (
             <Link to={`/orders`}>
-              <button>Powróć do zamówień</button>
+              <button className="btn btn-info shadow-none">
+                Powróć do zamówień
+              </button>
             </Link>
           ) : (
             <Link to={`/ordersClient`}>
-              <button>Powróć do Twoich zamówień</button>
+              <button className="btn btn-info shadow-none">
+                Powróć do Twoich zamówień
+              </button>
             </Link>
           )}
 

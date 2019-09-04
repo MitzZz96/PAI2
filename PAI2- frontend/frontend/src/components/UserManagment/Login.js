@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import fire from "../../Config/Fire";
 import { Link } from "react-router-dom";
+import { GET_ERRORS } from "../../actions/types";
 
 export class Login extends Component {
   state = {
@@ -29,9 +30,12 @@ export class Login extends Component {
     fire
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
+      .then(u => {
+        console.log(u);
+      })
       .catch(err => {
         console.log(err);
+        window.alert(`${err}`);
       });
   };
 
@@ -45,6 +49,7 @@ export class Login extends Component {
       })
       .catch(err => {
         console.log(err);
+        window.alert(`${err}`);
       });
     this.moveWin();
   };
