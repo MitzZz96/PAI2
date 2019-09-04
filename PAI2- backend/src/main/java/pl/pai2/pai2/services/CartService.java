@@ -102,62 +102,10 @@ public class CartService {
         }
     }
 
-//    public void completeOrder(Cart cart){
-//        if(cart.getOrderState() == OrderState.SENT) {
-//            cart.setOrderState(OrderState.COMPLETED);
-//            cart.setDeliveryDate(new Date());
-//            cartRepository.save(cart);
-//
-//        } else if(cart.getOrderState() == OrderState.AWAITING_PAYMENT)
-//            throw  new PaymentException("Waiting for payment");
-//        else
-//            throw new OrderNotSentException("The order has not been delivered yet");
-//    }
-//
-//    public void changeOrderState(String uid, OrderState orderState){
-//        Cart cart = findCurrentCartByUid(uid);
-//        if(orderState == OrderState.COMPLETED){
-//            completeOrder(findPenultimateUserCart(uid));
-//        } else if(orderState == OrderState.SENT){
-//
-//            Cart sentCart = findPenultimateUserCart(uid);
-//            sentCart.setShipDate(new Date());
-//            sentCart.setOrderState(orderState);
-//            cartRepository.save(sentCart);
-//
-//        } else if (orderState == OrderState.PAID) {
-//            List<ProductOrder> orders = findCurrentProductOrders(uid);
-//
-//            for (ProductOrder o : orders) {
-//                Product p = o.getProduct();
-//                System.out.println("cart : " + cart.getSummaryCost() + "  |  product : " + o.getSummaryPrice());
-//                cart.setSummaryCost(cart.getSummaryCost() + o.getSummaryPrice());
-//                p.setQuantity(p.getQuantity() - o.getQuantity());
-//                productService.saveOrUpdateProduct(p);
-//            }
-//
-//            cart.setOrderState(orderState);
-//            cartRepository.save(cart);
-//
-//            Cart newCart = new Cart();
-//            newCart.setUid(uid);
-//            newCart.setOrderState(OrderState.EMPTY);
-//            cartRepository.save(newCart);
-//        } else {
-//            cart.setOrderState(orderState);
-//            cartRepository.save(cart);
-//        }
-//    }
-
     public List<ProductOrder> findCartProductOrders(Long id){
         Cart cart = findCartById(id);
         return productOrderRepository.findAllByCart(cart);
     }
-
-//    public Cart findPenultimateUserCart(String uid){
-//        List<Cart> cart = cartRepository.findCartByUid(uid);
-//        return cart.get(cart.size()-2);
-//    }
 
     public Cart findCurrentCartByUid(String uid){
         List<Cart> cart = cartRepository.findCartByUid(uid);

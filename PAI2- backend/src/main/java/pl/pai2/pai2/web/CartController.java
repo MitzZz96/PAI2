@@ -62,6 +62,11 @@ public class CartController {
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}/orders")
+    public ResponseEntity<?> getCartProductOrders(@PathVariable Long id){
+        return new ResponseEntity<>(cartService.findCartProductOrders(id), HttpStatus.OK);
+    }
+
     @GetMapping("/user/{uid}/all")
     public ResponseEntity<?> getAllUserCarts(@PathVariable String uid){
         return new ResponseEntity<>(cartService.findAllCartsByUid(uid), HttpStatus.OK);
