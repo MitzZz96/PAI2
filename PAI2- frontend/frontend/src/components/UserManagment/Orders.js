@@ -12,7 +12,7 @@ import {
 import fire from "../../Config/Fire";
 import OrderItem from "./OrderItem";
 
-class Orders_test extends Component {
+class Orders extends Component {
   state = {
     clients: [],
     uid: ""
@@ -25,11 +25,6 @@ class Orders_test extends Component {
         uid: userLog.uid
       });
     }
-    this.props.getAllUsers();
-    this.props.getAllCarts();
-  }
-
-  componentWillReceiveProps(nextProps) {
     this.props.getAllUsers();
     this.props.getAllCarts();
   }
@@ -96,7 +91,7 @@ class Orders_test extends Component {
   }
 }
 
-Orders_test.propTypes = {
+Orders.propTypes = {
   getAddress: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired
 };
@@ -109,4 +104,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getAddress, getContact, getAllUsers, getUserCart, getAllCarts, getUser }
-)(Orders_test);
+)(Orders);

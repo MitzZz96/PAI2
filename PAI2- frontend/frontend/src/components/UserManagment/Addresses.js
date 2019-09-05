@@ -20,72 +20,72 @@ class Addresses extends Component {
     let upperTab = this.props.address.users.map(user => {
       return (
         <tr key={user.idUser}>
-          <th scope="row">{indexContact++}</th>
-          <td>{user.firstName}</td>
-          <td>{user.lastName}</td>
-          <td>{user.contact.email}</td>
-          <td>{user.contact.number1}</td>
-          <td>{user.contact.number2 ? user.contact.number2 : "-"}</td>
-        </tr>
+        <th scope="row"><center>{indexContact++}</center></th>
+        <td><center>{user.firstName}</center></td>
+        <td><center>{user.lastName}</center></td>
+        <td><center>{user.contact.email}</center></td>
+        <td><center>{user.contact.number1}</center></td>
+        <td>{user.contact.number2 ?<center> {user.contact.number2}</center> :<center> - </center>}</td>
+      </tr>
       );
     });
 
     let lowerTab = this.props.address.users.map(user => {
       return (
         <tr key={user.idUser}>
-          <th scope="row">{indexAddress++}</th>
-          <td>{user.address.streetAddress}</td>
-          <td>{user.address.homeNumber}</td>
-          <td>{user.address.localNumber}</td>
-          <td>{user.address.city}</td>
-          <td>{user.address.stateOrProvince}</td>
-          <td>{user.address.zipCode}</td>
-        </tr>
+        <th scope="row"><center>{indexAddress++}</center></th>
+        <td><center>{user.address.streetAddress}</center></td>
+        <td><center>{user.address.homeNumber}</center></td>
+        <td><center>{user.address.localNumber}</center></td>
+        <td><center>{user.address.city}</center></td>
+        <td><center>{user.address.stateOrProvince}</center></td>
+        <td><center>{user.address.zipCode}</center></td>
+      </tr>
       );
     });
 
     return (
       <div className="container">
-        <div className="main">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">
-                Dane kontaktowe klientów
-              </h1>
-              <hr />
-              <table className="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Imię</th>
-                    <th scope="col">Nazwisko</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Numer 1</th>
-                    <th scope="col">Numer 2</th>
-                  </tr>
-                </thead>
-                <tbody>{upperTab}</tbody>
-              </table>
+      <div className="main">
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="customer-contact-details display-4 text-center">
+              Dane kontaktowe klientów
+            </h1>
+            <hr />
+            <table className="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"><center>#</center></th>
+                  <th scope="col"><center>Imię</center></th>
+                  <th scope="col"><center>Nazwisko</center></th>
+                  <th scope="col"><center>Email</center></th>
+                  <th scope="col"><center>Numer 1</center></th>
+                  <th scope="col"><center>Numer 2</center></th>
+                </tr>
+              </thead>
+              <tbody>{upperTab}</tbody>
+            </table>
 
-              <hr />
-              <table className="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Ulica</th>
-                    <th scope="col">Nr domu</th>
-                    <th scope="col">Nr mieszkania</th>
-                    <th scope="col">Miasto</th>
-                    <th scope="col">Województwo</th>
-                    <th scope="col">Kod pocztowy</th>
-                  </tr>
-                </thead>
-                <tbody>{lowerTab}</tbody>
-              </table>
-            </div>
+            <hr />
+            <table className="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"><center>#</center></th>
+                  <th scope="col"><center>Ulica</center></th>
+                  <th scope="col"><center>Nr domu</center></th>
+                  <th scope="col"><center>Nr mieszkania</center></th>
+                  <th scope="col"><center>Miasto</center></th>
+                  <th scope="col"><center>Województwo</center></th>
+                  <th scope="col"><center>Kod pocztowy</center></th>
+                </tr>
+              </thead>
+              <tbody>{lowerTab}</tbody>
+            </table>
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

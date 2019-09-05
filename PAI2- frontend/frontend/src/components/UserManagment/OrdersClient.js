@@ -58,38 +58,38 @@ class OrdersClient extends Component {
 
     return (
       <div className="container">
-        <div className="main">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Twoje zamówienia</h1>
-              <hr />
+      <div className="main">
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="your-order display-4 text-center">Twoje zamówienia</h1>
+            <hr />
 
-              {orders.length === 0 ? (
-                <h1 style={{ textAlign: "center", color: "red" }}>
-                  Brak aktywnych zamówień
-                </h1>
-              ) : (
-                <table className="table table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Data nadania</th>
-                      <th scope="col">Data dostawy</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Koszt całkowity</th>
-                      <th scope="col">Podgląd zamówienia</th>
-                      <th scope="col">Mapa dojazdu</th>
-                    </tr>
-                  </thead>
-                  <tbody>{orders}</tbody>
-                </table>
-              )}
+            {orders.length === 0 ? (
+              <h1 style={{ textAlign: "center", color: "red" }}>
+                Brak aktywnych zamówień
+              </h1>
+            ) : (
+              <table className="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"><center>#</center></th>
+                    <th scope="col"><center>Data nadania</center></th>
+                    <th scope="col"><center>Data dostawy</center></th>
+                    <th scope="col"><center>Status</center></th>
+                    <th scope="col"><center>Koszt całkowity</center></th>
+                    <th scope="col"><center>Podgląd zamówienia</center></th>
+                    <th scope="col"><center>Mapa dojazdu</center></th>
+                  </tr>
+                </thead>
+                <tbody>{orders}</tbody>
+              </table>
+            )}
 
-              <hr />
-            </div>
+            <hr />
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }
@@ -98,36 +98,36 @@ const OrderItem = props => {
   const { cart } = props;
   return (
     <tr>
-      <th scope="row">{props.index}</th>
-      <td>{cart.shipDate === null ? "-" : cart.shipDate}</td>
-      <td>{cart.deliveryDate === null ? "-" : cart.deliveryDate}</td>
+      <th scope="row"><center>{props.index}</center></th>
+      <td>{cart.shipDate === null ? <center>-</center>: <center>cart.shipDate</center>}</td>
+      <td>{cart.deliveryDate === null ?<center>-</center> : <center>cart.deliveryDate</center>}</td>
       <td>
         {cart.orderState === "SENT"
-          ? "Wysłano"
+          ? <center>Wysłano</center>
           : cart.orderState === "EMPTY"
-          ? "Koszyk jest pusty"
+          ? <center>Koszyk jest pusty</center>
           : cart.orderState === "PENDING"
-          ? "Oczekujące zamówienie"
+          ? <center>Oczekujące zamówienie</center>
           : cart.orderState === "AWAITING_PAYMENT"
-          ? "Oczekująca zapłata"
+          ? <center>Oczekująca zapłata</center>
           : cart.orderState === "PAID"
-          ? "Zapłacone"
+          ? <center>Zapłacone</center>
           : cart.orderState === "COMPLETED"
-          ? "Zakończone"
+          ? <center>Zakończone</center>
           : cart.orderState === "CANCELLED"
-          ? "Zmaówienie anulowane"
+          ? <center>"Zmaówienie anulowane"</center>
           : null}
       </td>
-      <td>{cart.summaryCost} zł</td>
+      <td><center>{cart.summaryCost} zł</center></td>
       <td>
         <Link to={`/orderDetails/${cart.idCart}`}>
-          <button>Szczegóły</button>
+        <center><button>Szczegóły</button></center>
         </Link>
       </td>
 
       <td>
         <Link to={`/map/${cart.uid}`}>
-          <button>Mapa</button>
+          <center><button>Mapa</button></center>
         </Link>
       </td>
     </tr>

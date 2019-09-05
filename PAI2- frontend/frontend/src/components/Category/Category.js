@@ -81,25 +81,24 @@ class Category extends Component {
             <h1>Dział produktów {category_name}</h1>
           </center>
 
-          <div className="row">
-            <div className="col-6 col-md-4">
-              <div className="search_engine">
-                <input
-                  className="form-control "
-                  type="search"
-                  placeholder="Wyszukaj"
-                  aria-label="Search"
-                  onChange={this.onchange}
-                />
-              </div>
+          <div className="row ">
+            <div className="col-sm-2 col-md-3 search-engine ">
+              <input
+                className="form-control shadow-none  ml-3 mt-2 "
+                type="search"
+                placeholder="Wyszukaj"
+                aria-label="Search"
+                onChange={this.onchange}
+              />
+            </div>
 
-              <div className="col-6 col-md-3 ml-5 ">
-                <button className="sort_button " onClick={this.handleClick}>
-                  {this.state.search_type
-                    ? "Sortuj rosnąco"
-                    : "Sortuj malejąco"}
-                </button>
-              </div>
+            <div className=" col-sm-1 col-md-1 mt-2 ">
+              <button
+                className="button-sort  shadow-none "
+                onClick={this.handleClick}
+              >
+                {this.state.search_type ? "Sortuj rosnąco" : "Sortuj malejąco"}
+              </button>
             </div>
           </div>
           <div className="col-md-3" />

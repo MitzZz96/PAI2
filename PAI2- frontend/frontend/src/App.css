@@ -144,6 +144,48 @@ body {
   font-weight: 600;
 }
 
+.container .main .search-engine .form-control {
+  width: 264px;
+}
+
+.container .main .button-sort {
+  background-color: #979696;
+
+  color: white;
+  height: 37px;
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  border: none;
+}
+
+.container .main .button-sort:hover {
+  background-color: #757575;
+  font-weight: 600;
+}
+
+.container .main .product_detarman h1 {
+  color: rgb(80, 75, 75);
+  padding-top: 20px;
+}
+
+.container .main .table.table-borderless .form-control {
+  border: 1px solid grey;
+  width: 223px;
+}
+
+.container .main .table.table-borderless .btn.btn-primary.btn-sm {
+  background-color: #979696;
+  border: none;
+  height: 30px;
+  letter-spacing: 2px;
+}
+
+.container .main .table.table-borderless .btn.btn-primary.btn-sm:hover {
+  background-color: #757575;
+  font-weight: 600;
+}
+
 /*.............................PRODUCTITEM.JS-----------------------------*/
 
 .card.product {
@@ -361,9 +403,36 @@ a:hover {
   font-weight: 600;
 }
 
-/*----------------------------OrdersClient.JS---------------------------------*/
-.container .main {
+/*----------------------------ORDERS.JS--------------------------------------*/
+.container .main .active-order {
+  padding-top: 20px;
+  color: #4e4e4e;
+  letter-spacing: 2px;
 }
+
+/*----------------------------ORDERDETAILS.JS--------------------------------------*/
+.container .main .your-order {
+  padding-top: 20px;
+  color: #4e4e4e;
+  letter-spacing: 2px;
+}
+.container .main .button-your-order {
+  background-color: #979696;
+  border: none;
+  letter-spacing: 2px;
+}
+
+.container .main .button-your-order:hover {
+  background-color: #757575;
+  font-weight: 600;
+}
+
+.container .main .your-order-sum {
+  text-align: center;
+}
+
+/*----------------------------OrdersClient.JS---------------------------------*/
+
 .container .main .order {
   margin-top: 20px;
   color: #4e4e4e;
@@ -387,21 +456,22 @@ a:hover {
 .button-map:hover.btn.btn-info:hover {
   background-color: #aaacaa;
 }
+
 /*----------------------------USERMAP.JS---------------------------------*/
 
-.container .main .map-header {
+.container .main .access-map {
   padding-top: 20px;
   color: #4e4e4e;
   letter-spacing: 2px;
 }
 
-.container .main .button-order.btn.btn-info {
+.container .main .button-orders-client.btn.btn-info {
   background-color: #979696;
   border: none;
   letter-spacing: 2px;
 }
 
-.container .main .button-order.btn.btn-info:hover {
+.container .main .button-orders-client.btn.btn-info:hover {
   background-color: #757575;
   font-weight: 600;
 }
@@ -414,6 +484,13 @@ a:hover {
   letter-spacing: 2px;
 }
 
+/*---------------------------ADDRESSESS--------------------------------*/
+
+.container .main .customer-contact-details {
+  padding-top: 20px;
+  color: #4e4e4e;
+  letter-spacing: 2px;
+}
 /*----------------------------ADRIAN------------------------------------*/
 /*----------------------------PRODUCT------------------------------------*/
 .card-body.order:hover {

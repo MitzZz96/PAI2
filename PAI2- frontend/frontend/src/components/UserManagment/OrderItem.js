@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { changeOrderState } from "../../actions/userActions";
+import { changeOrderState, getUser } from "../../actions/userActions";
 import { connect } from "react-redux";
 class OrderItem extends Component {
   state = {
     status: "",
     statusPL: "",
-    client_clicked: false
+    client_clicked: false,
+    uid: this.props.cart.uid
   };
+
+  // componentWillUnmount() {
+  //   this.props.getUser(this.state.uid);
+  // }
 
   handleChangeStatus = e => {
     if (e.target.value === "Wybierz...") {
@@ -110,6 +115,7 @@ class OrderItem extends Component {
 
 OrderItem.propTypes = {
   changeOrderState: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired
 };
 
@@ -119,5 +125,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { changeOrderState }
+  { changeOrderState, getUser }
 )(OrderItem);

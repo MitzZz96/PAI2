@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import img from "../../images/test.jpg";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
@@ -68,36 +67,48 @@ class OrderDetails extends Component {
           <center>
             {this.props.address.userLogged.client === false ? (
               <React.Fragment>
-                <h1 className="display-4 text-center">
+                <h1 className="your-order display-4 text-center">
                   Zamówienie nr {this.props.address.cart.idCart}
                 </h1>
                 <hr />
                 <Link to={`/orders`}>
-                  <button className="btn btn-info shadow-none">
+                  <button className="button-your-order btn btn-info shadow-none">
                     Powróć do zamówień
                   </button>
                 </Link>
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <h1 className="display-4 text-center">Twoje zamówienie</h1>
+                <h1 className="your-order display-4 text-center">
+                  Twoje zamówienie
+                </h1>
                 <hr />
                 <Link to={`/ordersClient`}>
-                  <button className="btn btn-info shadow-none">
+                  <button className="button-your-order btn btn-info shadow-none">
                     Powróć do Twoich zamówień
                   </button>
                 </Link>
               </React.Fragment>
             )}
           </center>
+          <hr />
 
-          {products}
+          {products.length === 0 ? (
+            <h1 className="mb-5" style={{ textAlign: "center", color: "red" }}>
+              Brak produktów w zamówieniu
+            </h1>
+          ) : (
+            products
+          )}
+
           <hr />
           <div className="row">
-            <div className="col-sm-12 col-md-5 ">
-              <h2 className=" float-sm-left">
-                Suma całkowita: {this.props.address.cart.summaryCost} zł
-              </h2>
+            <div className="col-sm-12 col-md-12 mt-2 ">
+              <center>
+                <h2>
+                  Suma całkowita: {this.props.address.cart.summaryCost} zł
+                </h2>
+              </center>
             </div>
           </div>
         </div>
@@ -132,8 +143,8 @@ const OrderDetailsItem = props => {
               <div className="col-3">
                 <img
                   className="image mt-3 mb-3"
-                  src={img}
-                  alt="Ceresit Grunt głęboko penetrujący CT17 2 l"
+                  alt={product.product.description}
+                  src={require(`../../images/Products_icons/${product.product.image}.jpg`)}
                 />
               </div>
               <div className="col-7">

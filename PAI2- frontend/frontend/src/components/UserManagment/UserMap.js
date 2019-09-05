@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getCoordinates } from "../../actions/userActions";
+import { getCoordinates, getUser } from "../../actions/userActions";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 
 class UserMap extends Component {
@@ -10,6 +10,7 @@ class UserMap extends Component {
     x: null,
     y: null
   };
+
   componentDidMount() {
     const { params } = this.props.match;
     console.log(params);
@@ -34,7 +35,7 @@ class UserMap extends Component {
         <div className="main" style={{ textAlign: "center" }}>
           <h1>Mapa dojazdu</h1>
           <hr />
-          {this.props.address.userLogged.isClient === false ? (
+          {this.props.address.userLogged.client === false ? (
             <Link to={`/orders`}>
               <button className="btn btn-info shadow-none">
                 Powróć do zamówień
@@ -78,6 +79,7 @@ class UserMap extends Component {
 
 UserMap.propTypes = {
   getCoordinates: PropTypes.func.isRequired,
+  getUser: PropTypes.func.isRequired,
   address: PropTypes.object.isRequired
 };
 
@@ -87,5 +89,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCoordinates }
+  { getCoordinates, getUser }
 )(UserMap);

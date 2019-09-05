@@ -9,6 +9,7 @@ const ItemList = props => {
         product={product}
         category_name={product.category_name}
         user={props.user}
+        filtredProducts={props.filtredProducts}
       />
     );
   });

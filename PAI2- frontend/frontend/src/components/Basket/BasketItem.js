@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import img from "../../images/test.jpg";
 import { deleteProductOrder } from "../../actions/userActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -34,8 +33,8 @@ class BasketItem extends Component {
                 <div className="col-3">
                   <img
                     className="image mt-3 mb-3"
-                    src={img}
-                    alt="Ceresit Grunt głęboko penetrujący CT17 2 l"
+                    alt={product.product.description}
+                    src={require(`../../images/Products_icons/${product.product.image}.jpg`)}
                   />
                 </div>
                 <div className="col-7">

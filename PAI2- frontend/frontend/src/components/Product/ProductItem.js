@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import img from "../../images/test.jpg";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import fire from "../../Config/Fire";
@@ -60,10 +59,14 @@ class ProductItem extends Component {
   }
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-      summaryPrice: e.target.value * this.props.product.price
-    });
+    if (e.target.value > this.props.product.quantity) {
+      window.alert("Zmniejsz ilość produktu ze względu na dostępność");
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value,
+        summaryPrice: e.target.value * this.props.product.price
+      });
+    }
   };
 
   handleSubmit = e => {
@@ -86,6 +89,7 @@ class ProductItem extends Component {
 
   render() {
     const { product } = this.props;
+
     return (
       <React.Fragment>
         <div className="row">
@@ -94,8 +98,8 @@ class ProductItem extends Component {
               <div className="image-container p-5">
                 <img
                   className="image"
-                  src={img}
-                  alt="Ceresit Grunt głęboko penetrujący CT17 2 l"
+                  alt={product.description}
+                  src={require(`../../images/Products_icons/${product.image}.jpg`)}
                 />
               </div>
 

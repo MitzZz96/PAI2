@@ -95,11 +95,12 @@ export class Register extends Component {
 
   render() {
     return (
-      <div className="register">
-        <div className="container">
+      <div className="container">
+        <div className="register">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Rejestracja</h1>
+              <h1 className="reg display-4 text-center">Rejestracja</h1>
+              <hr></hr>
               <p className="lead text-center">Dodaj nowy adres</p>
               <form onSubmit={this.handleSubmit}>
                 <div className="form-row">
@@ -107,7 +108,7 @@ export class Register extends Component {
                     <label htmlFor="inputFirstName">Imię</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputFirstName"
                       placeholder="Imię"
                       name="firstName"
@@ -119,7 +120,7 @@ export class Register extends Component {
                     <label htmlFor="inputLastName">Nazwisko</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputLastName"
                       placeholder="Nazwisko"
                       name="lastName"
@@ -133,9 +134,9 @@ export class Register extends Component {
                     <label htmlFor="inputAddress">Adres</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none "
                       id="inputAddress"
-                      placeholder="Podaj ulicę"
+                      placeholder="Podaj ulicę "
                       name="streetAddress"
                       value={_.get(this.state.address, "streetAddress")}
                       onChange={this.handleChangeAddress}
@@ -145,7 +146,7 @@ export class Register extends Component {
                     <label htmlFor="inputHomeNumber">Nr domu</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputHomeNumber"
                       placeholder="Nr domu"
                       name="homeNumber"
@@ -157,7 +158,7 @@ export class Register extends Component {
                     <label htmlFor="inputLocalNumber">Nr mieszkania</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputLocalNumber"
                       placeholder="Nr miesz"
                       name="localNumber"
@@ -171,7 +172,7 @@ export class Register extends Component {
                     <label htmlFor="inputCity">Miasto</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputCity"
                       placeholder="Podaj miasto"
                       name="city"
@@ -183,7 +184,7 @@ export class Register extends Component {
                     <label htmlFor="inputState">Województwo</label>
                     <select
                       id="inputState"
-                      className="form-control"
+                      className="form-control shadow-none"
                       name="stateOrProvince"
                       value={_.get(this.state.address, "stateOrProvince")}
                       onChange={this.handleChangeAddress}
@@ -211,9 +212,9 @@ export class Register extends Component {
                     <label htmlFor="inputZip">Kod pocztowy</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputZip"
-                      placeholder="Kod pocztowy"
+                      placeholder="Kod poczt..."
                       name="zipCode"
                       value={_.get(this.state.address, "zipCode")}
                       onChange={this.handleChangeAddress}
@@ -225,7 +226,7 @@ export class Register extends Component {
                     <label htmlFor="inputPhoneNumber1">Nr telefonu 1</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputPhoneNumber1"
                       placeholder="Nr telefonu 1"
                       name="number1"
@@ -237,7 +238,7 @@ export class Register extends Component {
                     <label htmlFor="inputPhoneNumber2">Nr telefonu 2</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control shadow-none"
                       id="inputPhoneNumber2"
                       placeholder="Nr telefonu 2"
                       name="number2"
@@ -246,12 +247,12 @@ export class Register extends Component {
                     />
                   </div>
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+            
+                <input type="submit" className="button-register btn btn-info btn-block btn-default shadow-none mt-4 mb-5" />
               </form>
             </div>
           </div>
         </div>
-        <br />
       </div>
     );
   }
