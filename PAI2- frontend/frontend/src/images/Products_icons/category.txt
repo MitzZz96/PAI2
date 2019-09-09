@@ -1,0 +1,6 @@
+INSERT INTO pai2.category (id_category, name) VALUES ('1', 'miesa');
+INSERT INTO pai2.category (id_category, name) VALUES ('2', 'nabial');
+INSERT INTO pai2.category (id_category, name) VALUES ('3', 'pieczywo');
+INSERT INTO pai2.category (id_category, name) VALUES ('4', 'owoce');
+INSERT INTO pai2.category (id_category, name) VALUES ('5', 'slodycze');
+INSERT INTO pai2.category (id_category, name) VALUES ('6', 'napoje');

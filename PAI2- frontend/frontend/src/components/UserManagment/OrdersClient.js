@@ -58,38 +58,54 @@ class OrdersClient extends Component {
 
     return (
       <div className="container">
-      <div className="main">
-        <div className="row">
-          <div className="col-md-12">
-            <h1 className="your-order display-4 text-center">Twoje zamówienia</h1>
-            <hr />
-
-            {orders.length === 0 ? (
-              <h1 style={{ textAlign: "center", color: "red" }}>
-                Brak aktywnych zamówień
+        <div className="main">
+          <div className="row">
+            <div className="col-md-12">
+              <h1 className="your-order display-4 text-center">
+                Twoje zamówienia
               </h1>
-            ) : (
-              <table className="table table-striped table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col"><center>#</center></th>
-                    <th scope="col"><center>Data nadania</center></th>
-                    <th scope="col"><center>Data dostawy</center></th>
-                    <th scope="col"><center>Status</center></th>
-                    <th scope="col"><center>Koszt całkowity</center></th>
-                    <th scope="col"><center>Podgląd zamówienia</center></th>
-                    <th scope="col"><center>Mapa dojazdu</center></th>
-                  </tr>
-                </thead>
-                <tbody>{orders}</tbody>
-              </table>
-            )}
+              <hr />
 
-            <hr />
+              {orders.length === 0 ? (
+                <h1 style={{ textAlign: "center", color: "red" }}>
+                  Brak aktywnych zamówień
+                </h1>
+              ) : (
+                <table className="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <center>#</center>
+                      </th>
+                      <th scope="col">
+                        <center>Data nadania</center>
+                      </th>
+                      <th scope="col">
+                        <center>Data dostawy</center>
+                      </th>
+                      <th scope="col">
+                        <center>Status</center>
+                      </th>
+                      <th scope="col">
+                        <center>Koszt całkowity</center>
+                      </th>
+                      <th scope="col">
+                        <center>Podgląd zamówienia</center>
+                      </th>
+                      <th scope="col">
+                        <center>Mapa dojazdu</center>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>{orders}</tbody>
+                </table>
+              )}
+
+              <hr />
+            </div>
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }
@@ -98,36 +114,56 @@ const OrderItem = props => {
   const { cart } = props;
   return (
     <tr>
-      <th scope="row"><center>{props.index}</center></th>
-      <td>{cart.shipDate === null ? <center>-</center>: <center>cart.shipDate</center>}</td>
-      <td>{cart.deliveryDate === null ?<center>-</center> : <center>cart.deliveryDate</center>}</td>
+      <th scope="row">
+        <center>{props.index}</center>
+      </th>
       <td>
-        {cart.orderState === "SENT"
-          ? <center>Wysłano</center>
-          : cart.orderState === "EMPTY"
-          ? <center>Koszyk jest pusty</center>
-          : cart.orderState === "PENDING"
-          ? <center>Oczekujące zamówienie</center>
-          : cart.orderState === "AWAITING_PAYMENT"
-          ? <center>Oczekująca zapłata</center>
-          : cart.orderState === "PAID"
-          ? <center>Zapłacone</center>
-          : cart.orderState === "COMPLETED"
-          ? <center>Zakończone</center>
-          : cart.orderState === "CANCELLED"
-          ? <center>"Zmaówienie anulowane"</center>
-          : null}
+        {cart.shipDate === null ? (
+          <center>-</center>
+        ) : (
+          <center>{cart.shipDate}</center>
+        )}
       </td>
-      <td><center>{cart.summaryCost} zł</center></td>
+      <td>
+        {cart.deliveryDate === null ? (
+          <center>-</center>
+        ) : (
+          <center>{cart.deliveryDate}</center>
+        )}
+      </td>
+      <td>
+        {cart.orderState === "SENT" ? (
+          <center>Wysłano</center>
+        ) : cart.orderState === "EMPTY" ? (
+          <center>Koszyk jest pusty</center>
+        ) : cart.orderState === "PENDING" ? (
+          <center>Oczekujące zamówienie</center>
+        ) : cart.orderState === "AWAITING_PAYMENT" ? (
+          <center>Oczekująca zapłata</center>
+        ) : cart.orderState === "PAID" ? (
+          <center>Zapłacone</center>
+        ) : cart.orderState === "COMPLETED" ? (
+          <center>Zakończone</center>
+        ) : cart.orderState === "CANCELLED" ? (
+          <center>Zmaówienie anulowane</center>
+        ) : null}
+      </td>
+      <td>
+        <center>{cart.summaryCost} zł</center>
+      </td>
       <td>
         <Link to={`/orderDetails/${cart.idCart}`}>
-        <center><button>Szczegóły</button></center>
+          <center>
+            <button>Szczegóły</button>
+          </center>
         </Link>
       </td>
 
       <td>
         <Link to={`/map/${cart.uid}`}>
-          <center><button>Mapa</button></center>
+          <center>
+            <button>Mapa</button>
+          </center>
         </Link>
       </td>
     </tr>

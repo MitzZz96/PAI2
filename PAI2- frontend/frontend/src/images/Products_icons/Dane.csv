@@ -1,0 +1,60 @@
+id_product,created_at,description,image,name,price,quantity,updated_at,id_category
+1,NULL,"Polska świeża kiełbasa",kielbasa,Kiełbasa,37.89,15,NULL,1
+2,NULL,"Sokołów Mielonka tyrolska",mielonka,Mielonka,16.99,10,NULL,1
+3,NULL,"Balcerzak szynka gotowana 100 g",szynka,Szynka,3.69,15,NULL,1
+4,NULL,"Łopatka w majeranku Prosiaczek",lopatka,Łopatka,23.89,17,NULL,1
+5,NULL,"Boczek Wieprzowy Syrowy bez Żeberek",boczek,Boczek,13.29,4,NULL,1
+6,NULL,"Kaczka Polska Mrożona",kaczka,Kaczka,16.79,3,NULL,1
+7,NULL,"Bebiko mleko początkowe dla niemowląd od urodzenia",bebiko,Bebiko,34.99,16,NULL,2
+8,NULL,"Almette jogurtowy. Puszysty serek twarogowy",almette,Almette,4.39,20,NULL,2
+9,NULL,"Algida Big Milk",algida,Algida,2.69,43,NULL,2
+10,NULL,"Gratka o smaku truskawkowym",gratka,Gratka,1.73,89,NULL,2
+11,NULL,"Mlekovita maślanka naturalna",maślanka,Maślanka,3.39,24,NULL,2
+12,NULL,"Jagr kefir truskawkowy",kefir,Kefir,3.29,67,NULL,2
+13,NULL,"Chleb biały ",chleb-bialy,"Chleb biały",2.89,40,NULL,3
+14,NULL,"Ciastko DUO truskawkowe",duo,DUO,3.29,60,NULL,3
+15,NULL,"Rogalik Croissant z masłem wypiekany",rogalik,rogalik,1.79,30,NULL,3
+16,NULL,"7Days Boresto słodka bulka z nadzieniem kakaowym",7days,"7 Days",1.29,50,NULL,3
+17,NULL,"Kajzerka wypiekana",kajzerka,Kajzerka,0.8,120,NULL,3
+18,NULL,"Piekarnia Bajgiel Pączek",paczek,Pączek,1.49,15,NULL,3
+19,NULL,"Soczyste jabłka",jabłko,Jabłko,1.79,200,NULL,4
+20,NULL,"Banan 1kg",banan,Banany,4.49,200,NULL,4
+21,NULL,"Gruszka importowana 1kg",gruszka,Gruszka,2.29,200,NULL,4
+22,NULL,"Arbuz 1kg",arbuz,Arbuz,2.99,200,NULL,4
+23,NULL,"Soczyste mandarynki",mandarynki,Mandarynki,1.59,200,NULL,4
+24,NULL,"Kiwi - 4 sztuki",kiwi,Kiwi,1.39,200,NULL,4
+25,NULL,"E Wedel Czekolada Gorzka",wedel,Wedel,4.29,50,NULL,5
+26,NULL,"Mentos owocowe cukierki",mentos,Mentos,2.78,50,NULL,5
+27,NULL,"Grześki wafel w czekoladzie",grzeski,Grześki,1.79,120,NULL,5
+28,NULL,"Lizaki Chupa Cups",lizaki,Lizaki,0.89,200,NULL,5
+29,NULL,"Haribo żelki owoce w kształcie misiów",haribo,Haribo,3.99,200,NULL,5
+30,NULL,"Chipsy Lays o smaku zielonej cebulki",lays,Lays,5.99,200,NULL,5
+31,NULL,"Coca Cola napój gazowany",cocacola,"Coca Cola",4.22,50,NULL,6
+32,NULL,"Pepsi napój gazowany",pepsi,Pepsi,3.89,50,NULL,6
+33,NULL,"Fanta pomarańczowa napój gazowany",fanta,Fanta,2.8,50,NULL,6
+34,NULL,"Tymbark jabłko-mięta",tymbark,Tymbark,3.79,50,NULL,6
+35,NULL,"Napój Nestea",nestea,Nestea,4.29,50,NULL,6
+36,NULL,"Mirinda pomarańczowa napój gazowany",mirinda,Mirinda,3.2,50,NULL,6
+37,NULL,"Cappy sok jabłkowy",cappy,Cappy,3.89,50,NULL,6
+38,NULL,"Żywiec Zdrój woda niegazowana",zywiec,"Żywiec Zdrój",2.39,50,NULL,6
+39,NULL,"Cisowianka woda niegaozwana",cisowianka,Cisowianka,2.59,50,NULL,6
+40,NULL,"Jacobs Cronat Gold Kawa mielona",jacobs,Jacobs,24.99,120,NULL,6
+41,NULL,"Lipton zielona hernata",greentea,"Green Tea",3.49,120,NULL,6
+42,NULL,"Saga herbata czarna",saga,Saga,4.99,120,NULL,6
+47,NULL,"Jeżyki Classic ciastka",jezyki,Jeżyki,4.29,50,NULL,5
+48,NULL,"Krakuski deserowe Herbatniki z cukrem",krakuski,Krakuski,4.49,50,NULL,5
+49,NULL,"Ferrero - Rafaello",rafaello,Rafaello,12.35,50,NULL,5
+50,NULL,"Merci kolekcja czekoladek deserowych",merci,Merci,11.99,50,NULL,5
+51,NULL,"Petitki herbatniki",petitki,Petitki,3.26,120,NULL,5
+52,NULL,"Delicie szampańskie malinowe",delicie,Delicie,4.23,120,NULL,5
+53,NULL,"Soczyste brzoskwinie ",brzoskwinia,Brzoskwinia,3.79,200,NULL,4
+54,NULL,"Melon żółty 1kg",melon,Melon,5.99,200,NULL,4
+55,NULL,"Winogrona jasne 1kg",winogrono,Winogrono,8.99,200,NULL,4
+56,NULL,"Awokado 1szt",awokado,Awokado,5.99,200,NULL,4
+57,NULL,"Ananas miodowy 1kg",ananas,Ananas,4.99,200,NULL,4
+58,NULL,"Maliny 125g",maliny,Maliny,5.99,200,NULL,4
+59,NULL,"Jogurt Zott Jogobella Classic 150g",jogobella,Jogobella,1.29,35,NULL,2
+60,NULL,"Jogurt naturalny Zott",zott,Zott,2.29,14,NULL,2
+61,NULL,"Deser Monte",monte,Monte,6.49,22,NULL,2
+62,NULL,"Schab bez kości",schab,Schab,16.99,3,NULL,1
+63,NULL,"Karkówka musztardowa bez kości",karkowka,Karkówka,17.49,5,NULL,1
