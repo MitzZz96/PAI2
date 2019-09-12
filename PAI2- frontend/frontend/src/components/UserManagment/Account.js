@@ -13,22 +13,44 @@ class Account extends Component {
   state = {
     user: {},
     uid: "",
-    userLogged: {}
+    userLogged: {},
+    userFire: fire.auth().currentUser
   };
 
   componentDidMount() {
+    console.log("hi");
     var userLog = fire.auth().currentUser;
-    if (userLog) {
-      this.setState({
-        uid: userLog.uid,
-        userLogged: this.props.address.userLogged
-      });
-    }
+    this.setState(
+      {
+        uid: localStorage.getItem("user")
+        // userLogged: userLog
+      },
+      console.log("done", this.state.userLogged),
+      this.props.getUser(this.state.uid),
+      console.log("doneMountGet")
+    );
+
+    // if (userLog) {
+    //   this.setState(
+    //     {
+    //       // uid: userLog.uid,
+    //       userLogged: this.props.address.userLogged,
+    //       userFire: userLog
+    //     },
+    //     console.log("doneUserLog")
+    //   );
+    // }
   }
 
   componentDidUpdate(prevProps) {
-    if (this.state.uid !== prevProps.address.userLogged.uid) {
-      this.props.getUser(this.state.uid);
+    if (this.props.user.user !== null) {
+      if (this.state.uid !== prevProps.address.userLogged.uid) {
+        this.props.getUser(this.state.uid);
+        console.log("donegetuser", prevProps.address.userLogged);
+
+        console.log("poszlo");
+        // this.moveWin();
+      }
     }
   }
 
@@ -37,13 +59,32 @@ class Account extends Component {
     const { userLogged } = nextProps.address;
     var userLog = fire.auth().currentUser;
     if (userLog) {
-      this.setState({
-        uid: userLog.uid,
-        user,
-        userLogged
-      });
+      this.setState(
+        {
+          uid: userLog.uid,
+          user,
+          userLogged
+        },
+        console.log("doneupdate", userLogged),
+        this.moveWin()
+      );
     }
+    // if (localStorage.getItem("user") !== nextProps.address.userLogged.uid) {
+    //   console.log(localStorage.getItem("user"));
+    //   this.moveWin();
+    // }
   }
+
+  moveWin = () => {
+    if (this.state.uid !== this.props.address.userLogged.uid) {
+      setTimeout(function() {
+        window.location.href = "/register";
+      }, 1000);
+      console.log("yas");
+    } else {
+      return console.log("nope");
+    }
+  };
 
   render() {
     const logout = () => {

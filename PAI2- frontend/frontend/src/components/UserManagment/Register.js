@@ -10,7 +10,7 @@ export class Register extends Component {
     uid: "",
     firstName: "",
     lastName: "",
-    client: false,
+    client: true,
     address: {
       city: "",
       homeNumber: null,
@@ -247,8 +247,11 @@ export class Register extends Component {
                     />
                   </div>
                 </div>
-            
-                <input type="submit" className="button-register btn btn-info btn-block btn-default shadow-none mt-4 mb-5" />
+
+                <input
+                  type="submit"
+                  className="button-register btn btn-info btn-block btn-default shadow-none mt-4 mb-5"
+                />
               </form>
             </div>
           </div>

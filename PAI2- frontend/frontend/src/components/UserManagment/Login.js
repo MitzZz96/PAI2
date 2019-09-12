@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import fire from "../../Config/Fire";
+import { fire, provider } from "../../Config/Fire";
 
 export class Login extends Component {
   state = {
@@ -31,6 +31,21 @@ export class Login extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(u => {
         console.log(u);
+      })
+      .catch(err => {
+        console.log(err);
+        window.alert(`${err}`);
+      });
+  };
+
+  loginWithFacebook = e => {
+    e.preventDefault();
+    fire
+      .auth()
+      .signInWithPopup(provider)
+      .then(u => {
+        console.log(u);
+        console.log(u.user);
       })
       .catch(err => {
         console.log(err);
@@ -109,6 +124,13 @@ export class Login extends Component {
                       onClick={this.login}
                     >
                       Zaloguj
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn btn-info mx-auto btn-lg btn-block"
+                      onClick={this.loginWithFacebook}
+                    >
+                      Zaloguj przez facebooka
                     </button>
 
                     <button
